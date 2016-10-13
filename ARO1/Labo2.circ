@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project integrity="7505cf487d932805aa252ff61216bb63c2fe80ea" source="2.13.20.t" version="1.0">
+<project integrity="f30b2606471f33f6988f103c319d908259ab4caa" source="2.13.20.t" version="1.0">
 This file is intended to be loaded by Logisim-evolution (https://github.com/reds-heig/logisim-evolution).
 <lib desc="#Wiring" name="0">
-    <tool name="Splitter">
-      <a name="facing" val="west"/>
-    </tool>
     <tool name="Pin">
       <a name="facing" val="west"/>
     </tool>
@@ -771,6 +768,7 @@ end TCL_Generic;
     <wire from="(550,330)" to="(550,490)"/>
     <wire from="(520,310)" to="(520,420)"/>
     <wire from="(420,420)" to="(520,420)"/>
+    <wire from="(1000,480)" to="(1010,480)"/>
     <wire from="(420,370)" to="(500,370)"/>
     <wire from="(590,380)" to="(740,380)"/>
     <wire from="(730,410)" to="(880,410)"/>
@@ -778,6 +776,7 @@ end TCL_Generic;
     <wire from="(320,380)" to="(400,380)"/>
     <wire from="(880,290)" to="(880,360)"/>
     <wire from="(420,360)" to="(500,360)"/>
+    <wire from="(850,480)" to="(1000,480)"/>
     <wire from="(500,290)" to="(610,290)"/>
     <wire from="(320,440)" to="(400,440)"/>
     <wire from="(730,290)" to="(880,290)"/>
@@ -787,7 +786,6 @@ end TCL_Generic;
     <wire from="(730,310)" to="(740,310)"/>
     <wire from="(500,410)" to="(610,410)"/>
     <wire from="(850,430)" to="(850,480)"/>
-    <wire from="(850,480)" to="(1010,480)"/>
     <wire from="(500,290)" to="(500,360)"/>
     <wire from="(880,360)" to="(940,360)"/>
     <wire from="(880,370)" to="(880,410)"/>
@@ -818,7 +816,8 @@ end TCL_Generic;
       <a name="bit6" val="1"/>
       <a name="bit7" val="1"/>
     </comp>
-    <comp lib="0" loc="(1030,480)" name="Pin">
+    <comp lib="0" loc="(1000,480)" name="Pin">
+      <a name="facing" val="west"/>
       <a name="output" val="true"/>
       <a name="label" val="C_out"/>
       <a name="labelloc" val="east"/>
@@ -957,6 +956,17 @@ end TCL_Generic;
     <wire from="(420,430)" to="(610,430)"/>
     <wire from="(880,370)" to="(880,410)"/>
     <wire from="(550,330)" to="(610,330)"/>
+    <comp lib="0" loc="(1010,480)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="label" val="C_out"/>
+      <a name="labelloc" val="east"/>
+      <a name="owner" val="yohann_meyer"/>
+      <a name="date" val="11.10.16 13:46:15"/>
+      <a name="version" val="2.13.20.t"/>
+      <a name="uuid" val="b2d4604c-ceeb-4b7f-8c53-3e6406a1a35a"/>
+      <a name="integrity" val="37c63c24251de386199e8b37f3d43496b56c3953"/>
+    </comp>
     <comp loc="(730,290)" name="ADD4BITS"/>
     <comp lib="0" loc="(400,380)" name="Splitter">
       <a name="incoming" val="8"/>
@@ -1043,16 +1053,6 @@ end TCL_Generic;
       <a name="integrity" val="251b1b4998916d088e329be0364707796f9fa4f9"/>
     </comp>
     <comp loc="(340,440)" name="COMP2_8BITS"/>
-    <comp lib="0" loc="(1030,480)" name="Pin">
-      <a name="output" val="true"/>
-      <a name="label" val="C_out"/>
-      <a name="labelloc" val="east"/>
-      <a name="owner" val="yohann_meyer"/>
-      <a name="date" val="11.10.16 13:46:15"/>
-      <a name="version" val="2.13.20.t"/>
-      <a name="uuid" val="b2d4604c-ceeb-4b7f-8c53-3e6406a1a35a"/>
-      <a name="integrity" val="37c63c24251de386199e8b37f3d43496b56c3953"/>
-    </comp>
     <comp lib="7" loc="(4,50)" name="Text" trackercomp="true">
       <a name="text" val="Attention, votre version de Logisim"/>
       <a name="font" val="SansSerif plain 48"/>
@@ -1761,35 +1761,25 @@ end TCL_Generic;
     <a name="clabelfont" val="SansSerif bold 12"/>
     <a name="circuitnamedbox" val="true"/>
     <a name="circuitvhdlpath" val=""/>
-    <wire from="(540,390)" to="(540,500)"/>
-    <wire from="(750,490)" to="(820,490)"/>
+    <wire from="(670,510)" to="(680,510)"/>
     <wire from="(200,540)" to="(420,540)"/>
     <wire from="(940,450)" to="(1090,450)"/>
-    <wire from="(610,470)" to="(630,470)"/>
-    <wire from="(410,500)" to="(410,560)"/>
+    <wire from="(800,470)" to="(940,470)"/>
+    <wire from="(610,490)" to="(670,490)"/>
     <wire from="(200,410)" to="(370,410)"/>
     <wire from="(390,460)" to="(390,520)"/>
-    <wire from="(390,410)" to="(420,410)"/>
-    <wire from="(540,520)" to="(630,520)"/>
-    <wire from="(410,560)" to="(420,560)"/>
-    <wire from="(330,440)" to="(330,630)"/>
-    <wire from="(750,470)" to="(820,470)"/>
-    <wire from="(390,410)" to="(390,440)"/>
-    <wire from="(150,630)" to="(330,630)"/>
+    <wire from="(540,520)" to="(670,520)"/>
     <wire from="(390,460)" to="(570,460)"/>
-    <wire from="(630,490)" to="(630,520)"/>
+    <wire from="(670,510)" to="(670,520)"/>
     <wire from="(390,520)" to="(420,520)"/>
     <wire from="(370,390)" to="(370,410)"/>
     <wire from="(200,370)" to="(420,370)"/>
+    <wire from="(940,450)" to="(940,470)"/>
     <wire from="(540,370)" to="(570,370)"/>
     <wire from="(570,370)" to="(570,460)"/>
-    <wire from="(540,540)" to="(930,540)"/>
-    <wire from="(330,440)" to="(390,440)"/>
-    <wire from="(410,500)" to="(540,500)"/>
-    <wire from="(780,450)" to="(820,450)"/>
+    <wire from="(610,470)" to="(670,470)"/>
     <wire from="(370,390)" to="(420,390)"/>
     <comp loc="(540,520)" name="ADD8BITS"/>
-    <comp loc="(940,450)" name="ADD8BITS"/>
     <comp lib="0" loc="(1090,450)" name="Pin">
       <a name="facing" val="west"/>
       <a name="output" val="true"/>
@@ -1813,18 +1803,10 @@ end TCL_Generic;
     </comp>
     <comp loc="(540,370)" name="ADD8BITS"/>
     <comp lib="0" loc="(610,470)" name="Constant"/>
-    <comp lib="0" loc="(930,540)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="output" val="true"/>
-      <a name="label" val="C_out"/>
-      <a name="labelloc" val="east"/>
-      <a name="owner" val="yohann_meyer"/>
-      <a name="date" val="13.10.16 15:17:45"/>
-      <a name="version" val="2.13.20.t"/>
-      <a name="uuid" val="b04ddc95-9731-4b65-95e9-3c3a66c1d8f6"/>
-      <a name="integrity" val="d6ee691f7bca4782eabb28adacdd2c1069ac4e5c"/>
+    <comp lib="0" loc="(610,490)" name="Constant">
+      <a name="width" val="8"/>
+      <a name="value" val="0x0"/>
     </comp>
-    <comp loc="(750,470)" name="COMP2_8BITS"/>
     <comp lib="0" loc="(200,410)" name="Pin">
       <a name="width" val="8"/>
       <a name="label" val="B"/>
@@ -1834,18 +1816,7 @@ end TCL_Generic;
       <a name="uuid" val="d6ecff9e-c00a-4b93-80e0-8552574ffdab"/>
       <a name="integrity" val="d9b96e9d40768f3b4fbe36c9a7080364a6420be0"/>
     </comp>
-    <comp lib="0" loc="(780,450)" name="Constant">
-      <a name="width" val="8"/>
-      <a name="value" val="0x0"/>
-    </comp>
-    <comp lib="0" loc="(150,630)" name="Pin">
-      <a name="label" val="C_in"/>
-      <a name="owner" val="yohann_meyer"/>
-      <a name="date" val="13.10.16 15:26:18"/>
-      <a name="version" val="2.13.20.t"/>
-      <a name="uuid" val="9ecd8394-5f4c-435c-b6eb-9dd87329e286"/>
-      <a name="integrity" val="13c7817f4ce4eb9146fc2f45e727c74f138b863c"/>
-    </comp>
+    <comp loc="(800,470)" name="ADD_SUB8BITS"/>
     <comp lib="0" loc="(200,540)" name="Pin">
       <a name="width" val="8"/>
       <a name="label" val="C"/>
@@ -1888,43 +1859,33 @@ end TCL_Generic;
     <a name="clabelfont" val="SansSerif bold 12"/>
     <a name="circuitnamedbox" val="true"/>
     <a name="circuitvhdlpath" val=""/>
-    <wire from="(270,310)" to="(270,320)"/>
-    <wire from="(270,310)" to="(300,310)"/>
+    <wire from="(930,390)" to="(1000,390)"/>
+    <wire from="(800,390)" to="(800,410)"/>
     <wire from="(190,270)" to="(300,270)"/>
-    <wire from="(500,370)" to="(500,390)"/>
-    <wire from="(420,390)" to="(500,390)"/>
-    <wire from="(190,410)" to="(300,410)"/>
-    <wire from="(500,350)" to="(570,350)"/>
-    <wire from="(500,270)" to="(500,350)"/>
-    <wire from="(500,370)" to="(570,370)"/>
-    <wire from="(450,290)" to="(450,310)"/>
-    <wire from="(140,320)" to="(270,320)"/>
-    <wire from="(190,390)" to="(300,390)"/>
-    <wire from="(450,310)" to="(470,310)"/>
-    <wire from="(420,270)" to="(500,270)"/>
-    <wire from="(420,290)" to="(450,290)"/>
+    <wire from="(190,360)" to="(480,360)"/>
+    <wire from="(420,270)" to="(430,270)"/>
+    <wire from="(1000,410)" to="(1090,410)"/>
+    <wire from="(620,410)" to="(660,410)"/>
+    <wire from="(620,340)" to="(620,410)"/>
     <wire from="(190,290)" to="(300,290)"/>
-    <comp lib="0" loc="(140,320)" name="Pin">
-      <a name="owner" val="yohann_meyer"/>
-      <a name="date" val="13.10.16 15:36:17"/>
-      <a name="version" val="2.13.20.t"/>
-      <a name="uuid" val="cbcf9651-bce5-455e-9fab-76f1edc9f6e7"/>
-      <a name="integrity" val="92b50fb74f1d9fc8202489810f85606e1c6794e7"/>
-    </comp>
+    <wire from="(430,270)" to="(430,340)"/>
+    <wire from="(430,340)" to="(480,340)"/>
+    <wire from="(780,410)" to="(800,410)"/>
+    <wire from="(600,340)" to="(620,340)"/>
+    <wire from="(190,430)" to="(660,430)"/>
+    <wire from="(1000,390)" to="(1000,410)"/>
     <comp loc="(420,270)" name="ADD8BITS"/>
-    <comp loc="(420,390)" name="ADD8BITS"/>
-    <comp lib="0" loc="(570,350)" name="Pin">
+    <comp loc="(930,390)" name="IS_ZERO_8BITS"/>
+    <comp lib="0" loc="(1090,410)" name="Pin">
       <a name="facing" val="west"/>
       <a name="output" val="true"/>
-      <a name="width" val="8"/>
-      <a name="label" val="E"/>
       <a name="owner" val="yohann_meyer"/>
-      <a name="date" val="13.10.16 15:37:44"/>
+      <a name="date" val="13.10.16 16:14:55"/>
       <a name="version" val="2.13.20.t"/>
-      <a name="uuid" val="89b92ede-7133-4469-b1cd-2ee8a8040b1a"/>
-      <a name="integrity" val="99c942b90533c26b72557c653ed0177a8d16f874"/>
+      <a name="uuid" val="ea0dc771-b989-4e67-a565-6c65ad42c830"/>
+      <a name="integrity" val="58c88f2f6f16ec95aa1e647c7cc7d12825dcd28d"/>
     </comp>
-    <comp lib="0" loc="(190,410)" name="Pin">
+    <comp lib="0" loc="(190,430)" name="Pin">
       <a name="width" val="8"/>
       <a name="label" val="D"/>
       <a name="owner" val="yohann_meyer"/>
@@ -1933,7 +1894,8 @@ end TCL_Generic;
       <a name="uuid" val="8ccc1170-f55b-443e-817a-b7591ac1b21b"/>
       <a name="integrity" val="0ffc0d3d9a8edaf6881c3023fe5cd519927cd9b5"/>
     </comp>
-    <comp lib="0" loc="(190,390)" name="Pin">
+    <comp loc="(780,410)" name="ADD8BITS"/>
+    <comp lib="0" loc="(190,360)" name="Pin">
       <a name="width" val="8"/>
       <a name="label" val="C"/>
       <a name="owner" val="yohann_meyer"/>
@@ -1941,6 +1903,17 @@ end TCL_Generic;
       <a name="version" val="2.13.20.t"/>
       <a name="uuid" val="8ccc1170-f55b-443e-817a-b7591ac1b21b"/>
       <a name="integrity" val="0ffc0d3d9a8edaf6881c3023fe5cd519927cd9b5"/>
+    </comp>
+    <comp lib="0" loc="(1010,220)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="8"/>
+      <a name="label" val="F"/>
+      <a name="owner" val="yohann_meyer"/>
+      <a name="date" val="13.10.16 15:55:33"/>
+      <a name="version" val="2.13.20.t"/>
+      <a name="uuid" val="7663c881-ecdb-4c10-b96c-076cb7a28034"/>
+      <a name="integrity" val="b846651a80e2baebf9785bc31292f750dbf96f01"/>
     </comp>
     <comp lib="0" loc="(190,290)" name="Pin">
       <a name="width" val="8"/>
@@ -1951,17 +1924,7 @@ end TCL_Generic;
       <a name="uuid" val="8ccc1170-f55b-443e-817a-b7591ac1b21b"/>
       <a name="integrity" val="0ffc0d3d9a8edaf6881c3023fe5cd519927cd9b5"/>
     </comp>
-    <comp lib="0" loc="(470,310)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="output" val="true"/>
-      <a name="label" val="C_out"/>
-      <a name="labelloc" val="east"/>
-      <a name="owner" val="yohann_meyer"/>
-      <a name="date" val="13.10.16 15:34:49"/>
-      <a name="version" val="2.13.20.t"/>
-      <a name="uuid" val="a1296817-19b3-4d7c-aceb-b2f161976a90"/>
-      <a name="integrity" val="ed31231cc5d1b03c5a11212a3485f9861f13eb96"/>
-    </comp>
+    <comp loc="(600,340)" name="ADD8BITS"/>
     <comp lib="0" loc="(190,270)" name="Pin">
       <a name="width" val="8"/>
       <a name="label" val="A"/>
@@ -1970,6 +1933,167 @@ end TCL_Generic;
       <a name="version" val="2.13.20.t"/>
       <a name="uuid" val="42c3916b-4525-4705-adb8-28b94e6008ce"/>
       <a name="integrity" val="ee0eff3c16a36b1482e63788505fd5d989ef30e8"/>
+    </comp>
+    <comp lib="7" loc="(4,50)" name="Text" trackercomp="true">
+      <a name="text" val="Attention, votre version de Logisim"/>
+      <a name="font" val="SansSerif plain 48"/>
+      <a name="halign" val="left"/>
+    </comp>
+    <comp lib="7" loc="(4,100)" name="Text" trackercomp="true">
+      <a name="text" val="ne contient pas de tracker. Si vous"/>
+      <a name="font" val="SansSerif plain 48"/>
+      <a name="halign" val="left"/>
+    </comp>
+    <comp lib="7" loc="(4,150)" name="Text" trackercomp="true">
+      <a name="text" val="enregistrez votre projet, toutes les"/>
+      <a name="font" val="SansSerif plain 48"/>
+      <a name="halign" val="left"/>
+    </comp>
+    <comp lib="7" loc="(4,200)" name="Text" trackercomp="true">
+      <a name="text" val="informations du tracker seront"/>
+      <a name="font" val="SansSerif plain 48"/>
+      <a name="halign" val="left"/>
+    </comp>
+    <comp lib="7" loc="(4,250)" name="Text" trackercomp="true">
+      <a name="text" val="définitivement effacées."/>
+      <a name="font" val="SansSerif plain 48"/>
+      <a name="halign" val="left"/>
+    </comp>
+  </circuit>
+  <circuit name="IS_ZERO_8BITS">
+    <a name="circuit" val="IS_ZERO_8BITS"/>
+    <a name="clabel" val=""/>
+    <a name="clabelup" val="east"/>
+    <a name="clabelfont" val="SansSerif bold 12"/>
+    <a name="circuitnamedbox" val="true"/>
+    <a name="circuitvhdlpath" val=""/>
+    <wire from="(620,290)" to="(620,340)"/>
+    <wire from="(620,380)" to="(650,380)"/>
+    <wire from="(300,240)" to="(430,240)"/>
+    <wire from="(510,400)" to="(510,410)"/>
+    <wire from="(510,450)" to="(510,470)"/>
+    <wire from="(510,410)" to="(550,410)"/>
+    <wire from="(340,310)" to="(340,320)"/>
+    <wire from="(370,350)" to="(370,420)"/>
+    <wire from="(300,330)" to="(410,330)"/>
+    <wire from="(520,310)" to="(520,330)"/>
+    <wire from="(300,320)" to="(340,320)"/>
+    <wire from="(320,280)" to="(320,310)"/>
+    <wire from="(320,280)" to="(430,280)"/>
+    <wire from="(350,450)" to="(430,450)"/>
+    <wire from="(300,370)" to="(330,370)"/>
+    <wire from="(620,340)" to="(650,340)"/>
+    <wire from="(330,490)" to="(430,490)"/>
+    <wire from="(220,380)" to="(280,380)"/>
+    <wire from="(510,450)" to="(550,450)"/>
+    <wire from="(300,360)" to="(350,360)"/>
+    <wire from="(350,360)" to="(350,450)"/>
+    <wire from="(330,370)" to="(330,490)"/>
+    <wire from="(300,350)" to="(370,350)"/>
+    <wire from="(620,380)" to="(620,430)"/>
+    <wire from="(520,270)" to="(550,270)"/>
+    <wire from="(410,350)" to="(430,350)"/>
+    <wire from="(300,240)" to="(300,300)"/>
+    <wire from="(300,340)" to="(390,340)"/>
+    <wire from="(410,330)" to="(410,350)"/>
+    <wire from="(340,310)" to="(430,310)"/>
+    <wire from="(480,330)" to="(520,330)"/>
+    <wire from="(480,260)" to="(520,260)"/>
+    <wire from="(520,310)" to="(550,310)"/>
+    <wire from="(370,420)" to="(430,420)"/>
+    <wire from="(390,380)" to="(430,380)"/>
+    <wire from="(390,340)" to="(390,380)"/>
+    <wire from="(750,360)" to="(790,360)"/>
+    <wire from="(520,260)" to="(520,270)"/>
+    <wire from="(600,430)" to="(620,430)"/>
+    <wire from="(700,360)" to="(720,360)"/>
+    <wire from="(600,290)" to="(620,290)"/>
+    <wire from="(480,400)" to="(510,400)"/>
+    <wire from="(300,310)" to="(320,310)"/>
+    <wire from="(480,470)" to="(510,470)"/>
+    <comp lib="0" loc="(790,360)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="label" val="D"/>
+      <a name="owner" val="yohann_meyer"/>
+      <a name="date" val="13.10.16 16:05:29"/>
+      <a name="version" val="2.13.20.t"/>
+      <a name="uuid" val="188aa839-ea3c-4c18-a942-dc74378dde08"/>
+      <a name="integrity" val="a8ff3c76976a14237de539ceb410c3bac82fa5d1"/>
+    </comp>
+    <comp lib="1" loc="(480,400)" name="OR Gate">
+      <a name="owner" val="yohann_meyer"/>
+      <a name="date" val="13.10.16 16:03:06"/>
+      <a name="version" val="2.13.20.t"/>
+      <a name="uuid" val="c2422bc2-7cda-4cdb-a91c-aa612797c69d"/>
+      <a name="integrity" val="b0e293d9df072e98befb48df90b30513ed01fc92"/>
+    </comp>
+    <comp lib="1" loc="(600,430)" name="OR Gate">
+      <a name="owner" val="yohann_meyer"/>
+      <a name="date" val="13.10.16 16:04:40"/>
+      <a name="version" val="2.13.20.t"/>
+      <a name="uuid" val="cadb2639-30f6-4ac5-bbca-89f62eefd354"/>
+      <a name="integrity" val="cdc300ab6870d34c71d601232054c796bee236ac"/>
+    </comp>
+    <comp lib="1" loc="(480,260)" name="OR Gate">
+      <a name="owner" val="yohann_meyer"/>
+      <a name="date" val="13.10.16 16:03:06"/>
+      <a name="version" val="2.13.20.t"/>
+      <a name="uuid" val="a0461a3c-9e2e-432b-8f54-e6be902af8bb"/>
+      <a name="integrity" val="5077abe9ad919edcfbb171727518e42288eb7628"/>
+    </comp>
+    <comp lib="1" loc="(480,330)" name="OR Gate">
+      <a name="owner" val="yohann_meyer"/>
+      <a name="date" val="13.10.16 16:03:06"/>
+      <a name="version" val="2.13.20.t"/>
+      <a name="uuid" val="c2422bc2-7cda-4cdb-a91c-aa612797c69d"/>
+      <a name="integrity" val="b0e293d9df072e98befb48df90b30513ed01fc92"/>
+    </comp>
+    <comp lib="0" loc="(220,380)" name="Pin">
+      <a name="width" val="8"/>
+      <a name="label" val="A"/>
+      <a name="owner" val="yohann_meyer"/>
+      <a name="date" val="13.10.16 16:02:33"/>
+      <a name="version" val="2.13.20.t"/>
+      <a name="uuid" val="a4de4da7-f29a-45e9-9d33-f3a41cad7244"/>
+      <a name="integrity" val="ef21d85275d1f69d4b033315ed98b11f191de153"/>
+    </comp>
+    <comp lib="1" loc="(700,360)" name="OR Gate">
+      <a name="owner" val="yohann_meyer"/>
+      <a name="date" val="13.10.16 16:05:08"/>
+      <a name="version" val="2.13.20.t"/>
+      <a name="uuid" val="d9a3b939-8b87-4b70-9348-c339912b596a"/>
+      <a name="integrity" val="9dd1ca5f37cd69fa90d7e9646205ba8f4aed803d"/>
+    </comp>
+    <comp lib="1" loc="(480,470)" name="OR Gate">
+      <a name="owner" val="yohann_meyer"/>
+      <a name="date" val="13.10.16 16:03:06"/>
+      <a name="version" val="2.13.20.t"/>
+      <a name="uuid" val="c2422bc2-7cda-4cdb-a91c-aa612797c69d"/>
+      <a name="integrity" val="b0e293d9df072e98befb48df90b30513ed01fc92"/>
+    </comp>
+    <comp lib="1" loc="(600,290)" name="OR Gate">
+      <a name="owner" val="yohann_meyer"/>
+      <a name="date" val="13.10.16 16:04:40"/>
+      <a name="version" val="2.13.20.t"/>
+      <a name="uuid" val="0374d385-02f9-42da-a2fc-394d42f22220"/>
+      <a name="integrity" val="82409f00d11aa2e92a8ed6f7da9fd9dbb59d5d23"/>
+    </comp>
+    <comp lib="1" loc="(750,360)" name="NOT Gate">
+      <a name="owner" val="yohann_meyer"/>
+      <a name="date" val="13.10.16 16:06:23"/>
+      <a name="version" val="2.13.20.t"/>
+      <a name="uuid" val="b2418f00-2315-4700-94dc-df8d65a128f5"/>
+      <a name="integrity" val="99311b5312b4ebfd951ac055246047130159fa41"/>
+    </comp>
+    <comp lib="0" loc="(280,380)" name="Splitter">
+      <a name="fanout" val="8"/>
+      <a name="incoming" val="8"/>
+      <a name="owner" val="yohann_meyer"/>
+      <a name="date" val="13.10.16 16:02:50"/>
+      <a name="version" val="2.13.20.t"/>
+      <a name="uuid" val="56fd55a6-fbd5-4e70-991f-f59ffcd277f5"/>
+      <a name="integrity" val="6a2cd1b688d1f819dd13a41fdc690b954747425f"/>
     </comp>
     <comp lib="7" loc="(4,50)" name="Text" trackercomp="true">
       <a name="text" val="Attention, votre version de Logisim"/>
