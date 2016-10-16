@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project integrity="89bd333e02cf8d9e400a55b693820b9c5b355fb1" source="2.13.20.t" version="1.0">
+<project integrity="16317825ed68ff6420d8f6f472ddfbf99191d45b" source="2.13.20.t" version="1.0">
 This file is intended to be loaded by Logisim-evolution (https://github.com/reds-heig/logisim-evolution).
 <lib desc="#Wiring" name="0">
     <tool name="Pin">
@@ -996,13 +996,6 @@ end TCL_Generic;
     </comp>
     <comp loc="(730,290)" name="ADD4BITS"/>
     <comp loc="(340,440)" name="COMP2_8BITS"/>
-    <comp lib="0" loc="(110,540)" name="Clock">
-      <a name="owner" val="sven_rouvinez"/>
-      <a name="date" val="16.10.16 13:49:05"/>
-      <a name="version" val="2.13.20.t"/>
-      <a name="uuid" val="a362ebfe-f00f-41fb-8bbf-efd7ca798f3c"/>
-      <a name="integrity" val="ff5bfc9867f842c28497a0742f5d0d61ff832464"/>
-    </comp>
     <comp lib="0" loc="(400,440)" name="Splitter">
       <a name="incoming" val="8"/>
       <a name="owner" val="yohann_meyer"/>
@@ -1736,8 +1729,8 @@ end TCL_Generic;
     <a name="circuitnamedbox" val="true"/>
     <a name="circuitvhdlpath" val=""/>
     <wire from="(670,510)" to="(670,520)"/>
-    <wire from="(940,450)" to="(1090,450)"/>
     <wire from="(390,520)" to="(420,520)"/>
+    <wire from="(800,470)" to="(920,470)"/>
     <wire from="(200,540)" to="(420,540)"/>
     <wire from="(200,370)" to="(420,370)"/>
     <wire from="(390,460)" to="(570,460)"/>
@@ -1749,13 +1742,15 @@ end TCL_Generic;
     <wire from="(570,370)" to="(570,460)"/>
     <wire from="(200,410)" to="(370,410)"/>
     <wire from="(540,520)" to="(670,520)"/>
-    <wire from="(800,470)" to="(940,470)"/>
     <wire from="(390,460)" to="(390,520)"/>
-    <wire from="(940,450)" to="(940,470)"/>
     <wire from="(670,510)" to="(680,510)"/>
-    <comp loc="(540,520)" name="ADD8BITS"/>
+    <comp loc="(540,520)" name="ADD8BITS">
+      <a name="label" val="ADD8BITS2"/>
+    </comp>
     <comp lib="0" loc="(610,470)" name="Constant"/>
-    <comp loc="(540,370)" name="ADD8BITS"/>
+    <comp loc="(540,370)" name="ADD8BITS">
+      <a name="label" val="ADD8BITS1"/>
+    </comp>
     <comp lib="0" loc="(200,370)" name="Pin">
       <a name="width" val="8"/>
       <a name="label" val="A"/>
@@ -1765,7 +1760,7 @@ end TCL_Generic;
       <a name="uuid" val="9632c0c1-8af6-47d6-a359-d583a6ca8690"/>
       <a name="integrity" val="41c7c68444cfacc9bfc22a35abb4963df9bac6f6"/>
     </comp>
-    <comp lib="0" loc="(1090,450)" name="Pin">
+    <comp lib="0" loc="(920,470)" name="Pin">
       <a name="facing" val="west"/>
       <a name="output" val="true"/>
       <a name="width" val="8"/>
