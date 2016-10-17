@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project integrity="1252e423a2e3dfc42dddc35d836cf5b14e058d9b" source="2.13.20.t" version="1.0">
+<project integrity="b1589b29517bf5746de8da9fad199b11b490fb21" source="2.13.20.t" version="1.0">
 This file is intended to be loaded by Logisim-evolution (https://github.com/reds-heig/logisim-evolution).
 <lib desc="#Wiring" name="0">
     <tool name="Pin">
@@ -2255,14 +2255,6 @@ end TCL_Generic;
       <a name="integrity" val="079c529f9835ef93dd1fea623c8475fab347cc27"/>
     </comp>
     <comp lib="0" loc="(330,240)" name="Constant"/>
-    <comp lib="0" loc="(650,280)" name="Constant">
-      <a name="width" val="8"/>
-      <a name="value" val="0xff"/>
-    </comp>
-    <comp lib="0" loc="(650,320)" name="Constant">
-      <a name="width" val="8"/>
-      <a name="value" val="0x0"/>
-    </comp>
     <comp lib="4" loc="(430,190)" name="Counter"/>
     <comp lib="7" loc="(4,50)" name="Text" trackercomp="true">
       <a name="text" val="Attention, votre version de Logisim"/>
