@@ -1,0 +1,262 @@
+\documentclass[a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english,french]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb,amsfonts,textcomp}
+\usepackage{color}
+\usepackage{array}
+\usepackage{supertabular}
+\usepackage{hhline}
+\usepackage{hyperref}
+\usepackage{capt-of}
+\usepackage[pdftex]{graphicx}
+\usepackage{sectsty}
+\usepackage{tcolorbox}
+\usepackage{textcomp}
+\usepackage{courier}
+
+\usepackage[font={small,it}]{caption}
+
+
+
+
+
+
+\definecolor{havelockBlue}{rgb}{0.004, 0.42, 0.73}
+\definecolor{Monokaimagenta}{rgb}{0.86,0.08,0.24}
+\sectionfont{\color{havelockBlue}}
+
+
+
+\title{\color{Monokaimagenta} \textbf{Laboratoire \\ Codes redondants pour la détection d'erreurs }}
+\author{Sven Rouvinez \& Yohann Meyer}
+\date{2016-10-18}
+\begin{document}
+\maketitle
+
+
+\section{Additionneur 8 bits}
+	\paragraph{}
+	Sur la base des additionneurs conçus précédemment, concevoir et implémenter un additionneur 8-bits. 
+   \begin{tcolorbox}[colframe=Monokaimagenta,colback=white]
+		
+		\includegraphics[width=\textwidth]{Labo2-img001.png}
+		\captionof{figure}{Additionneur 8bits} 
+		\paragraph{}
+		L'additionneur 8bits est composé de 2 additionneurs 4bits qui eux sont composés d'aditionneurs 1bit, cette séparation  par couche  nous a permis de comprendre le fonctionne à la base d'un aditionneur pour ensuite le transposer en 8bits.
+		\paragraph{}
+		Les entrées sont définies par \textbf{A} et \textbf{B} sur 8bits et les nombres choisis transitent ensuite par 4 bus de 4 bits avant
+		d'être réunis par un splitter (4-2) après les opérations.
+		\paragraph{}
+		Le fil de l'entrée  \textbf{A}  est connecté sur l'entrée de notre additionneur 4bits et le fil de l'entrée  \textbf{B}  est connecté sur l'entrée  \textbf{B}  de notre additionneur. Le pin \textbf{ C\_out} nous permet de reporter notre retenue dans l'entrée \textbf{ C\_in}  du 2ème additionneur 4bits.
+		\paragraph{}
+		Le résultat de notre addition entre  \textbf{A}  et  \textbf{B}  se retrouve dans notre pin de sortie  \textbf{D}  et dans le cas d'un dépassement de mémoire, nous allons le retrouver dans le pin de sortie  \textbf{C\_out} .
+		
+	
+	   	
+
+	\end{tcolorbox}
+\section{Additionneur-Soustracteur 8 bits}
+	\paragraph{}
+	Concevoir et implémenter un additionneur/soustracteur 8-bit à l'aide d'un bloc additionneur 8-bit et des portes logiques. Note: Ajoutez un bit de sélection d'opération \textbf{S} (1 = Soustraction, 0 = Addition). Implémentez et simulez le système sur Logisim. Donnez-en un exemple d'utilisation.
+	\begin{center}
+	\includegraphics[width=200px]{Labo2-img002.png}
+
+	\end{center}	
+	  \begin{tcolorbox}[colframe=Monokaimagenta,colback=white]
+	  	\includegraphics[width=300px]{Labo2-img003.png}
+	  		\captionof{figure}{Additioneur- soustracteur 8bits} 
+	  	\paragraph{}
+	  	
+	  	L'additionneur/soustracteur utilise le concept du complément à 2, c'est à dire qu'il convertit notre nombre en entrée \textbf{B} en remplacant les 0 et 1 et en faisant +1 sur ce nombre. Par exemple : le nombre en binaire 010010 deviendra dans un premier temps (complément à 1) 101101 et ensuite nous rajoutons +1 ce qui donnera 101110.
+	  	\paragraph{}
+	  	Ce complément est à 8bits est composé de lui de 2 compléments à 4bits.
+	  	\includegraphics[width=300px]{Labo2-img004.png}
+	  		\captionof{figure}{chronogramme ADD\_SUB8BITS} 
+	  	\paragraph{}
+	  	Le chronogramme suivant ce compose d'un élément d'horloge \textbf{clk} et d'un autre \textbf{sysclk} qui permettent d'incrémenter les valeurs qui rentrent. Il y a un pin de sortie \textbf{D} qui affiche le résultat et l'autre affiche les débordement de mémoire. Et l'élément compteur fait office de mémoire afin de stocker toutes les valeurs calculées.
+		\end{tcolorbox}
+		\begin{tcolorbox}[colframe=Monokaimagenta,colback=white]
+	  	\includegraphics[width=300px]{Labo2-img005.png}
+	  		\captionof{figure}{Complément à 2 - 4bits} 		
+	  	\paragraph{}
+	  	Dans cette image, se trouve la structure de base de nos compléments. Le pin \textbf{S} définit s'il s'agit d'une addtion ou d'une soustraction. En effet les portes choisies sont des portes XOR qui on comme propriétés de n'être vrai que lorsque qu'une des entrée est vraie.\\ 
+	  	Exemple : \\
+	  	Pin S = 1 \\
+	  	Pin A = 0100 \\
+	  	
+	  	\centering
+	  	\texttt{%
+	  	\begin{tabular}{|c |c c c|}
+	  	\hline
+	  	{ Pin\#} &
+	  	{ Pin S} &
+	  	{ Pin A} &
+	  	{ XOR}\\
+	  	{ 0} &
+	  	{ 1} &
+	  	{ 0} &
+	  	{ 1}\\
+	  	{ 1} &
+	  	{ 1} &
+	  	{ 1} &
+	  	{ 0}\\
+	  	{ 2} &
+	  	{ 1} &
+	  	{ 0} &
+	  	{ 1}\\
+	  	{ 3} &
+	  	{ 1} &
+	  	{ 0} &
+	  	{ 1}\\\hline
+	  	\end{tabular}
+	  	}
+		\end{tcolorbox}
+\section{Calcul du Checksum}
+	\paragraph{}
+	Concevoir un système combinatoire qui calcule le checksum du type modular sum de trois octets données en entrée. Utiliser des additionneurs-soustracteurs 8-bits et d'autres composants, si nécessaire. Vous devez implémenter et simuler le système à l'aide de Logisim, en donnant quelques exemples d'utilisation.
+		\begin{center}
+		\includegraphics[width=200px]{Labo2-img006.png}
+		\end{center}
+	\begin{tcolorbox}[colframe=Monokaimagenta,colback=white]
+		\includegraphics[width=300px]{Labo2-img007.png}
+			\captionof{figure}{Checksum 8bits} 
+		\paragraph{}
+		Ce circuit se compose de 2 additionneurs 8bits et d'un additionneur/soustracteur 8bits et permet de calculer le checksum de 3 valeurs. Le checksum permet de vérifier l'intégriter des données car doit donner 0 lors de
+		l'addition avec les valeurs qui l'ont produit. Les exemples d'utilisations sont divers, comme par exemple valider un numéro de carte de crédit ou pour assurer l'intégrité d'un fichier téléchargé.
+		
+		La structure de ce checksum est : 2 additionneurs 8bits et 1 additionneur/ soustracteur 8bits
+		
+	
+		\begin{enumerate}
+	
+		\item 	\texttt{%
+		\begin{tabular}{|cc|}
+				\hline
+				A & 00000001 \\
+				B & 00000001 \\
+				ADD8BITS 1 & 00000010 \\
+				\hline
+				\end{tabular}
+				}
+		\item 	\texttt{%
+		\begin{tabular}{|cc|}
+				\hline
+				ADD8BITS 1 & 00000010 \\
+				C & 00000001 \\
+				ADD8BITS 2 & 00000011 \\
+				\hline
+			\end{tabular}
+			}
+		\item	\texttt{%
+		\begin{tabular}{|cc|}
+				\hline
+				ADD8BITS 2 & 00000001 \\
+				ADD8BIT\_SUBS 2 & 00000011 \\
+				Sortie     & 11111101 \\
+				\hline
+			\end{tabular}
+			}	
+		\end{enumerate}
+		\includegraphics[width=300px]{Labo2-img008.png}
+			\captionof{figure}{Chronogramme Checksum} 
+	\end{tcolorbox}
+	\newpage
+\section{Vérification d'intégrité en réception}
+	\paragraph{}
+	
+	Concevoir un circuit combinatoire qui permet de vérifier l'intégrité de quatre octets reçus en entrée (c.-à.d trois octets et leur checksum) et de calculer un bit de sortie valide égal à 1 lorsque aucune altération des données est détectée à la réception. Note: Ce circuit reçoit quatre octets et ne peut pas savoir quel est l'octet de checksum.
+		\begin{center}
+			\includegraphics[width=200px]{Labo2-img009.png}
+			\end{center}
+			
+	\begin{tcolorbox}[colframe=Monokaimagenta,colback=white]
+		\includegraphics[width=300px]{Labo2-img010.png}
+			\captionof{figure}{Verificateur d'intégrité} 
+		\paragraph{}
+		Ce circuit permet de contrôler l'intégrité d'une donnée représentée ici avec 3 octets et 1 checksum pour assurer que la transmission c'est bien déroulée. Comme le checksum représente la valeur qui additionnée avec les valeurs d'entrées vaut
+		zéro et que l'addition est \textbf{commutative}, il n'est pas nécessaire de connaître l'ordre. 
+		L'addition des 4 octects doit être égal à 0 afin de garantir l'intégrité des données, dans le cas contraire  , nous nous retrouvons avec des données altérées et donc potentiellement des données fausses.
+		\includegraphics[width=300px]{Labo2-img011.png}
+			\captionof{figure}{IsZero} 
+		\paragraph{}
+		Le circuit ci-dessus est utilisé pour retourner que la valeur entrée vaut bien zéro. \\
+		Les portes utilisées sont des OR qui ont comme propriétés de retourner faux si les 2 valeurs sont égales à 1, et étant donné que nous avons besoin d'avoir vrai si l'entrée vaut 0 il faut une porte NOT qui va inverser le résultat de nos portes et donc nous afficher un si l'entrée \textbf{A} vaut 0.
+	\end{tcolorbox}
+\section{Vérification du 1er groupe de données}
+	\paragraph{}
+	Supposez que les données 0x45, 0x68 et 0x73 sont envoyés avec l'octet de checksum correspondant, mais que par des aléas de transmission les données reçues sont 0x4D, 0x68, 0x73 et le checksum sans erreur. Calculez le checksum transmis et utilisez le circuit combinatoire développé pour vérifier l'intégrité de trois octets reçus. Que se passe-t-il ? Pourquoi ?
+	
+	\begin{tcolorbox}[colframe=Monokaimagenta,colback=white]
+	Obtention du checksum. Le calcul se fait avec les données 0x45, 0x68 et 0x73 afin d'obtenir le résultat correspondant à ces données.\\
+	\begin{enumerate}
+
+	\item Addition du pin  \textbf{A}  et  \textbf{B}  \\
+	\texttt{01000101 + 01101000 = 10101101}
+	\item Addition du résultat de l'étape 1 et pin  \textbf{C}  \\
+	\texttt{10101101 + 01110011 = 00100000}
+	\item Addition du résultat de l'étape 2 et pin \textbf{D} \\
+	\texttt{00100000 --> 11011111 + 00000001 = 11100000}
+	\item Passage par IS\_ZERO pour définir le bit de sortie.
+		\end{enumerate}
+		\paragraph{}
+	Notre checksum vaut donc 0xE0. Nous allons pouvoir l'utiliser dans le vérificateur d'intégrité.
+	\subsubsection*{Vérification de l'intégrité}
+	\paragraph{}
+	Pour simuler une altération des données nous allons utiliser les octects 0x4D, 0x68 et 0x73.
+		\includegraphics[width=300px]{Labo2-img012.png}
+			\captionof{figure}{Vérificateur d'intégrité} 	
+			
+	\begin{enumerate}
+
+	\item Addition du pin  \textbf{A}  et  \textbf{B}  \\
+	\texttt{11100101 + 10011110 = 10000011}
+	\item Addition du résultat de l'étape 1 et pin  \textbf{C}  \\
+	\texttt{10110101 + 01110011 = 10101000}
+	\item Addition du résultat de l'étape 2 et du pin \textbf{D} \\
+	\texttt{10101000 + 11100000 = 1000100}
+	\item On compare la valeur obtenue à 0. Si elles ne sont pas égales, il y a eu corruption des
+	données.
+		\end{enumerate}	
+	
+
+	\end{tcolorbox}
+\section{Vérification du 2ième groupe de données}
+	Supposez que les données 0xA5, 0x9E et 0x6F sont envoyés avec l'octet de checksum correspondant, mais que par des aléas de transmission les données reçues sont 0xE5, 0x9E, 0x2F et le checksum sans erreur. Calculez le checksum transmis et utilisez le circuit combinatoire développé pour vérifier l'intégrité de trois octets reçus. Que se passe-t-il ? Pourquoi ?
+	\begin{tcolorbox}[colframe=Monokaimagenta,colback=white]
+		\paragraph{}
+		Obtention du checksum. Le calcul se fait avec les données 0xA5, 0x9E et 0x6F afin d'obtenir le résultat correspondant à ces données.
+		
+			\begin{enumerate}
+		
+			\item Addition du pin  \textbf{A}  et  \textbf{B}  \\
+			\texttt{10100101 + 10011110 = 01000011}
+			\item Addition du résultat de l'étape 1 et pin  \textbf{C}  \\
+			\texttt{01000011 + 01101111 = 10110010}
+			\item Complément à 2 du résultat de l'étape 2 \\
+			\texttt{10110010 --> 01001101 + 00000001 = 01001101}
+			\item On compare la valeur obtenue à 0. Si elles ne sont pas égales, il y a eu corruption des
+			données.
+			\end{enumerate}	
+			\includegraphics[width=300px]{Labo2-img013.png}
+			\captionof{figure}{Vérificateur d'intégrité 2} 	
+			\begin{enumerate}
+		
+			\item Addition du pin  \textbf{A}  et  \textbf{B}  \\
+			\texttt{11100101 + 10011110 = 10000011}
+			\item Addition du résultat de l'étape 1 et pin  \textbf{C}  \\
+			\texttt{10000011 + 00101111 = 10110010}
+			\item Complément à 2 du résultat de l'étape 2 \\
+			\texttt{10110010 + 01001110 = 00000000}
+			\item Contrôle si le résultat vaut 0x00. C'est le cas
+			\end{enumerate}	
+			\paragraph{}
+			Il semblerait que la transmission se soit correctement faite vu que 
+			nous avons un bit de vérification égal à 0. \\
+			En réalité, nous sommes confrontés à un overflow. 
+			Tout les overflow ne vont pas 
+			
+		
+	\end{tcolorbox}
+\end{document}
