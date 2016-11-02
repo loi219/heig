@@ -41,7 +41,7 @@
 	Sur la base des additionneurs conçus précédemment, concevoir et implémenter un additionneur 8-bits. 
    \begin{tcolorbox}[colframe=Monokaimagenta,colback=white]
 		
-		\includegraphics[width=\textwidth]{Labo2-img001.png}
+		\includegraphics[width=\textwidth]{src/Labo2-img001.png}
 		\captionof{figure}{Additionneur 8bits} 
 		\paragraph{}
 		L'additionneur 8bits est composé de 2 additionneurs 4bits qui eux sont composés d'aditionneurs 1bit, cette séparation  par couche  nous a permis de comprendre le fonctionne à la base d'un aditionneur pour ensuite le transposer en 8bits.
@@ -61,24 +61,24 @@
 	\paragraph{}
 	Concevoir et implémenter un additionneur/soustracteur 8-bit à l'aide d'un bloc additionneur 8-bit et des portes logiques. Note: Ajoutez un bit de sélection d'opération \textbf{S} (1 = Soustraction, 0 = Addition). Implémentez et simulez le système sur Logisim. Donnez-en un exemple d'utilisation.
 	\begin{center}
-	\includegraphics[width=200px]{Labo2-img002.png}
+	\includegraphics[width=200px]{src/Labo2-img002.png}
 
 	\end{center}	
 	  \begin{tcolorbox}[colframe=Monokaimagenta,colback=white]
-	  	\includegraphics[width=300px]{Labo2-img003.png}
+	  	\includegraphics[width=300px]{src/Labo2-img003.png}
 	  		\captionof{figure}{Additioneur- soustracteur 8bits} 
 	  	\paragraph{}
 	  	
 	  	L'additionneur/soustracteur utilise le concept du complément à 2, c'est à dire qu'il convertit notre nombre en entrée \textbf{B} en remplacant les 0 et 1 et en faisant +1 sur ce nombre. Par exemple : le nombre en binaire 010010 deviendra dans un premier temps (complément à 1) 101101 et ensuite nous rajoutons +1 ce qui donnera 101110.
 	  	\paragraph{}
 	  	Ce complément est à 8bits est composé de lui de 2 compléments à 4bits.
-	  	\includegraphics[width=300px]{Labo2-img004.png}
+	  	\includegraphics[width=300px]{src/Labo2-img004.png}
 	  		\captionof{figure}{chronogramme ADD\_SUB8BITS} 
-	  	\paragraph{}
+	  	\paragraph{}h
 	  	Le chronogramme suivant ce compose d'un élément d'horloge \textbf{clk} et d'un autre \textbf{sysclk} qui permettent d'incrémenter les valeurs qui rentrent. Il y a un pin de sortie \textbf{D} qui affiche le résultat et l'autre affiche les débordement de mémoire. Et l'élément compteur fait office de mémoire afin de stocker toutes les valeurs calculées.
 		\end{tcolorbox}
 		\begin{tcolorbox}[colframe=Monokaimagenta,colback=white]
-	  	\includegraphics[width=300px]{Labo2-img005.png}
+	  	\includegraphics[width=300px]{src/Labo2-img005.png}
 	  		\captionof{figure}{Complément à 2 - 4bits} 		
 	  	\paragraph{}
 	  	Dans cette image, se trouve la structure de base de nos compléments. Le pin \textbf{S} définit s'il s'agit d'une addtion ou d'une soustraction. En effet les portes choisies sont des portes XOR qui on comme propriétés de n'être vrai que lorsque qu'une des entrée est vraie.\\ 
@@ -117,10 +117,10 @@
 	\paragraph{}
 	Concevoir un système combinatoire qui calcule le checksum du type modular sum de trois octets données en entrée. Utiliser des additionneurs-soustracteurs 8-bits et d'autres composants, si nécessaire. Vous devez implémenter et simuler le système à l'aide de Logisim, en donnant quelques exemples d'utilisation.
 		\begin{center}
-		\includegraphics[width=200px]{Labo2-img006.png}
+		\includegraphics[width=200px]{src/Labo2-img006.png}
 		\end{center}
 	\begin{tcolorbox}[colframe=Monokaimagenta,colback=white]
-		\includegraphics[width=300px]{Labo2-img007.png}
+		\includegraphics[width=300px]{src/Labo2-img007.png}
 			\captionof{figure}{Checksum 8bits} 
 		\paragraph{}
 		Ce circuit se compose de 2 additionneurs 8bits et d'un additionneur/soustracteur 8bits et permet de calculer le checksum de 3 valeurs. Le checksum permet de vérifier l'intégriter des données car doit donner 0 lors de
@@ -159,7 +159,7 @@
 			\end{tabular}
 			}	
 		\end{enumerate}
-		\includegraphics[width=300px]{Labo2-img008.png}
+		\includegraphics[width=300px]{src/Labo2-img008.png}
 			\captionof{figure}{Chronogramme Checksum} 
 	\end{tcolorbox}
 	\newpage
@@ -168,21 +168,25 @@
 	
 	Concevoir un circuit combinatoire qui permet de vérifier l'intégrité de quatre octets reçus en entrée (c.-à.d trois octets et leur checksum) et de calculer un bit de sortie valide égal à 1 lorsque aucune altération des données est détectée à la réception. Note: Ce circuit reçoit quatre octets et ne peut pas savoir quel est l'octet de checksum.
 		\begin{center}
-			\includegraphics[width=200px]{Labo2-img009.png}
+			\includegraphics[width=200px]{src/Labo2-img009.png}
 			\end{center}
 			
 	\begin{tcolorbox}[colframe=Monokaimagenta,colback=white]
-		\includegraphics[width=300px]{Labo2-img010.png}
+		\includegraphics[width=300px]{src/Labo2-img010.png}
 			\captionof{figure}{Verificateur d'intégrité} 
 		\paragraph{}
 		Ce circuit permet de contrôler l'intégrité d'une donnée représentée ici avec 3 octets et 1 checksum pour assurer que la transmission c'est bien déroulée. Comme le checksum représente la valeur qui additionnée avec les valeurs d'entrées vaut
 		zéro et que l'addition est \textbf{commutative}, il n'est pas nécessaire de connaître l'ordre. 
 		L'addition des 4 octects doit être égal à 0 afin de garantir l'intégrité des données, dans le cas contraire  , nous nous retrouvons avec des données altérées et donc potentiellement des données fausses.
-		\includegraphics[width=300px]{Labo2-img011.png}
+		\includegraphics[width=300px]{src/Labo2-img011.png}
 			\captionof{figure}{IsZero} 
 		\paragraph{}
-		Le circuit ci-dessus est utilisé pour retourner que la valeur entrée vaut bien zéro. \\
-		Les portes utilisées sont des OR qui ont comme propriétés de retourner faux si les 2 valeurs sont égales à 1, et étant donné que nous avons besoin d'avoir vrai si l'entrée vaut 0 il faut une porte NOT qui va inverser le résultat de nos portes et donc nous afficher un si l'entrée \textbf{A} vaut 0.
+	Le circuit ci-dessus est utilisé pour retourner que la valeur entrée vaut bien zéro. \\
+		La fonction OR ayant pour propriété de retourner 1 dès que l'une des entrées est 1, il nous
+		suffit de faire passer chaque bit de notre octet à travers une porte et le résultat final sera 
+		correspondant à 0 ssi il n'y a aucune entrée à 1 (si \textbf{A} vaut 0). 
+		Comme nous voulons un 1 en sortie dans ce cas, on rajoute une porte not. 
+		(Qui revient au même que d'utiliser une porte (NOR). 
 	\end{tcolorbox}
 \section{Vérification du 1er groupe de données}
 	\paragraph{}
@@ -205,7 +209,7 @@
 	\subsubsection*{Vérification de l'intégrité}
 	\paragraph{}
 	Pour simuler une altération des données nous allons utiliser les octects 0x4D, 0x68 et 0x73.
-		\includegraphics[width=300px]{Labo2-img012.png}
+		\includegraphics[width=300px]{src/Labo2-img012.png}
 			\captionof{figure}{Vérificateur d'intégrité} 	
 			
 	\begin{enumerate}
@@ -239,7 +243,7 @@
 			\item On compare la valeur obtenue à 0. Si elles ne sont pas égales, il y a eu corruption des
 			données.
 			\end{enumerate}	
-			\includegraphics[width=300px]{Labo2-img013.png}
+			\includegraphics[width=300px]{src/Labo2-img013.png}
 			\captionof{figure}{Vérificateur d'intégrité 2} 	
 			\begin{enumerate}
 		
