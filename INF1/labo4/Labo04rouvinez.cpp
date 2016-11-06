@@ -49,7 +49,8 @@ int main() {
 			        to_string(MAX_COUT_PRECISION) +
 			        "]: 10^-";
 			saisieCtrl = bool(cin >> precision);
-
+			FLUSH_BUFFER;
+			
 			if (! saisieCtrl) {
 				cin.clear();
 			}
@@ -59,10 +60,12 @@ int main() {
 
 
 		cout << "No" << setw(SET_W) << "Terme" << setw(SET_W) << "Pi/2" << setw(SET_W) << "Ecart" << endl;
-//TODO: boucle calcul
+		//TODO boucle calcul
 
-
+		//TODO add var result
 		cout << "Approximation de de Pi/2: " << endl;
+
+		//TODO add var result
 		cout << "Nombres de termes: " << endl;
 
 
