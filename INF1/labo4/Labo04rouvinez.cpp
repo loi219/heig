@@ -49,14 +49,15 @@ int main() {
 			        to_string(MAX_COUT_PRECISION) +
 			        "]: 10^-";
 			saisieCtrl = bool(cin >> precision);
-			FLUSH_BUFFER;
-			
-			if (! saisieCtrl) {
-				cin.clear();
-			}
-			cin.ignore(INT_MAX, '\n');
 
-		} while ((precision < MIN_COUT_PRECISION) || (precision > MAX_COUT_PRECISION) || ! saisieCtrl);
+
+			if (!saisieCtrl) {
+				cin.clear();
+				cin.ignore(INT_MAX,'\n');
+			}
+
+
+		} while ((precision < MIN_COUT_PRECISION) || (precision > MAX_COUT_PRECISION) || !saisieCtrl);
 
 
 		cout << "No" << setw(SET_W) << "Terme" << setw(SET_W) << "Pi/2" << setw(SET_W) << "Ecart" << endl;
@@ -69,8 +70,12 @@ int main() {
 		cout << "Nombres de termes: " << endl;
 
 
-		cout << "Voulez-vous continuer[o/n]:";
-		cin >> choixContinuer;
+		cout << "Voulez-vous continuer [o/n]:";
+		saisieCtrl = bool(cin >> choixContinuer);
+		if(!saisieCtrl){
+			cin.clear();
+			cin.ignore('n','\n');
+		}
 
 	} while (choixContinuer != 'n');
 
