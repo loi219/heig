@@ -31,6 +31,7 @@ int main() {
     const int   MAX_COUT_PRECISION  = 5;
     const int   SET_W               = 10;
     const int   SET_W_FIRST         = 3;
+    const int   DEFAULT_PRECISION   = 5;
 
     const       string ERREUR = "Erreur dans la precision";
 
@@ -76,7 +77,7 @@ int main() {
                 break;
 
             cout << setw(SET_W_FIRST) << terme << setw(SET_W) << num << "/" << setw(SET_W_FIRST) << denum << setw(SET_W)
-                 << setprecision(1 + precision) << sum << setprecision(5) << setw(SET_W) << ecart << endl;
+                 << setprecision(1 + precision) << sum << setprecision(DEFAULT_PRECISION) << setw(SET_W) << ecart << endl;
 
             if (num > denum) {
                 denum += 2;
