@@ -4,10 +4,10 @@
 	* Bonjour et pré9sentation programme
 	* Saisie de l'année par l'utilisateur
 	* Calculs
-		* L'année est-elle bissextile ? (estBissextile())\
+		* L'année est-elle bissextile ? (estBissextile())
 			Si oui, février a 30 jours.
 	* Affichage de chaque mois
-	* Demande si l\'92utilisateur veut relancer le programme
+	* Demande si l'utilisateur veut relancer le programme
 	* Au revoir.
 	
 ## Remarque
