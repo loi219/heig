@@ -1,6 +1,6 @@
 # README
 ## Squelette
-	Bonjour et pré9sentation programme
+	Bonjour et présentation programme
 	Saisie de l'année par l'utilisateur
 	Calculs
 		L'année est-elle bissextile ? (estBissextile())
