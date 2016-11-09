@@ -35,7 +35,7 @@ int main() {
     // 1.1 Définition des constantes
     unsigned int annee;     // L'année demandée par l'utilisateur
     char recommencer;
-    enum class jour {LU = 'L', MA = 'M', ME = 'M', JE = 'J', VE = 'V', SA = 'S', DI = 'D'};
+    enum class Jour {LU = 'L', MA = 'M', ME = 'M', JE = 'J', VE = 'V', SA = 'S', DI = 'D'};
 
     // 1.2 Définition de constantes
     const int NB_MOIS   =   12;
