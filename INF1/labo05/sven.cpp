@@ -23,7 +23,7 @@ using namespace std;
 
 
 bool estBissextile(int annee) {
-	return (bool) ! (annee % 400) || (! (annee % 4) && (annee % 100));
+	return (bool) !(annee % 400) || (!(annee % 4) && (annee % 100));
 }
 
 
@@ -46,7 +46,7 @@ int saisieInt(string messageEntree, string messageErreur, int borneMax, int born
 	bool saisieCtrl = (bool) saisieUtilisateur;
 
 
-	while (saisieUtilisateur < borneMin || saisieUtilisateur > borneMax || ! saisieCtrl) {
+	while (saisieUtilisateur < borneMin || saisieUtilisateur > borneMax || !saisieCtrl) {
 
 
 		cin.clear();
@@ -78,23 +78,23 @@ void afficherMois(int nbreJours, int annee, string mois) {
 	};
 
 
-	cout << mois<< " " << annee << endl;
+	cout << mois << " " << annee << endl;
 
 	cout << (char) Jour::LU << setw(SET_W) << (char) Jour::MA << setw(SET_W) << (char) Jour::ME << setw(SET_W)
 	     << (char) Jour::JE << setw(SET_W) << (char) Jour::VE << setw(SET_W) << (char) Jour::SA << setw(SET_W)
 	     << (char) Jour::DI << endl;
-if(mois == "Fevrier"){
-	cout << setw(10);
+	if (mois == "Fevrier") {
+		cout << setw(10);
 
 
-}
-	for (int jours = 1; jours <= nbreJours; jours ++) {
+	}
+	for (int jour = 1; jour <= nbreJours; jour++) {
 
-		if (! (jours % 7)) {
-			cout << jours << '\n';
+		if (!(jour % 7)) {
+			cout << jour << '\n';
 
 		} else {
-			cout << jours << setw(SET_W);
+			cout << jour << setw(SET_W);
 		}
 
 	}
@@ -116,7 +116,7 @@ int main() {
 	int annee = 2014;
 
 	//int dateUtilisateur=saisieInt(MESSAGE_ENTREE, MESSAGE_ERREUR, BORNE_MAX, BORNE_MIN);
-	for (int moisActuel = 1; moisActuel <= NBRE_MOIS; moisActuel ++) {
+	for (int moisActuel = 1; moisActuel <= NBRE_MOIS; moisActuel++) {
 
 		switch (moisActuel) {
 			case 1:
