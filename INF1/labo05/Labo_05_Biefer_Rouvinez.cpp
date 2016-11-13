@@ -1,9 +1,9 @@
 /*
 -----------------------------------------------------------------------------------
 Laboratoire : Labo_05_Biefer_Rouvinez
-Fichier     : Labo_04_Biefer_Rouvinez.cpp
+Fichier     : Labo_05_Biefer_Rouvinez.cpp
 Auteur(s)   : Julien Biefer et Sven Rouvinez
-Date        : 09.11.2016
+Date        : 13.11.2016
 
 But         : Afficher un calendrier complet pour une année donnée par l'utilisateur
 
@@ -16,7 +16,6 @@ Compilateur : Apple LLVM 8.0
 #include <iostream>
 #include <cstdlib>
 #include <limits>
-// Il faudra include le fichier pour les fonctions
 
 #define VIDER_BUFFER cin.ignore(numeric_limits<streamsize>::max(), '\n')
 
