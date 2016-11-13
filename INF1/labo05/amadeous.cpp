@@ -24,6 +24,20 @@ Compilateur : Apple LLVM 8.0
 
 using namespace std;
 
+// Renvoie le jour de la semaine (0-6) pour une date donnée
+// Tiré de http://mathforum.org/library/drmath/view/55837.html
+int jourSemaine(const int jour, const int mois, const int annee) {
+    int d = jour,
+            m = mois,
+            y = annee;
+
+    if (mois <= 2) {
+        m += 12;
+        --y;
+    }
+
+    return (d + 2*m + (3*(m+1)/5) + y + (y/4) - (y/100) + (y/400)) % 7;
+}
 
 // Renvoie true si l'année donnée est bissextile et false sinon
 bool estBissextile(const int annee) {
@@ -229,8 +243,6 @@ int main() {
     const int MIN_ANNEE = 1900;
     const int MAX_ANNEE = 2100;
 
-    // 1.3 Définition de l'affichage
-
     //=======================================================
     // 2. Bonjour et présentation programme
     //=======================================================
@@ -245,13 +257,18 @@ int main() {
                                                             "-" + to_string(MAX_ANNEE) + "] : ", MIN_ANNEE, MAX_ANNEE);
 
         //=======================================================
+        // 4. Détermination du jour de la semaine au 1er janvier
+        //=======================================================
+        premierJourAnnee = jourSemaine(1, 1, annee);
+
+        //=======================================================
         // 5. Affichage de chaque mois
         //=======================================================
         cout << "Voici le calendrier pour l'annee " << annee << "." << endl;
 
         for(int mois = 0, premierJourMoisSuivant = premierJourAnnee; mois < NB_MOIS; ++mois) {
             premierJourMoisSuivant = afficherMois(mois, annee, premierJourMoisSuivant);
-            cout << endl;
+            cout << endl << endl;
         }
         cout << endl;
 
@@ -260,7 +277,8 @@ int main() {
         //=======================================================
         cout << "Voulez-vous afficher une autre annee [o|n] ? ";
         cin >> recommencer;
-        cout << endl;
+	VIDER_BUFFER;
+	cout << endl;
 
     } while(toupper(recommencer) == 'O');
 
