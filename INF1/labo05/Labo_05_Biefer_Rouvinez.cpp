@@ -46,8 +46,8 @@ int jourSemaine(const int jour, const int mois, const int annee);
 int saisieInt(const string messageSaisie, const int borneMin, const int borneMax);
 
 // Demande à l'utilisateur s'il souhaite relancer le programme
-bool saisieRecommencer(const string messageSaisie, const char valeurTrue,
-                                                   const char valeurFalse);
+bool saisieRecommencer(const string messageSaisie, const char valeurVraieParam,
+                                                   const char valeurFalseParam);
 
 // Retourne le nombre de jour pour un mois donné en prenant en compte les années bissextiles
 // Tiré de http://www.dispersiondesign.com/articles/time/number_of_days_in_a_month
@@ -61,9 +61,9 @@ string intMoisEnString(const int numMois);
 // en paramètre. Affiche un message s'il ne match à aucun jour
 char intJourEnChar(const int numJourSemaine);
 
-// Affiche un mois donné en fonction du nombre de jours contenu dans celui-ci et ajoute
-// renvoie le dernier jour de la semaine qu'il affiche afin de démarrer le mois suivant
-// le jour d'après.
+// Affiche un mois donné en fonction du nombre de jours contenu dans celui-ci et
+// renvoie le dernier jour affiché de la semaine afin de démarrer le mois suivant
+// un jour après la fin du mois précédent
 int afficherMois(const int mois, const int annee, const int debutDuMois);
 
 
@@ -80,10 +80,9 @@ int main() {
     // 1.1 Définition des variables
     int annee            = 0;   // L'année demandée par l'utilisateur
     int premierJourAnnee = 0;   // 0 correspond au lundi
-
     bool recommencer;
 
-    // 1.2 Définition de constantes
+    // 1.2 Définition des constantes
     const int NB_MOIS = 12;
     const int MIN_ANNEE = 1900;
     const int MAX_ANNEE = 2100;
@@ -152,7 +151,7 @@ int jourSemaine(const int jour, const int mois, const int annee) {
 }
 
 bool estBissextile(const int annee) {
-    // Une année est bissextile si c'est un multiple de 400 ou si c'est un multiple de 4
+    // Une année est bissextile si elle est multiple de 400 ou elle est multiple de 4
     // et pas de 100.
     return (bool) (!(annee % 400) || (!(annee % 4) && (annee % 100)));
 }
@@ -197,15 +196,15 @@ int saisieInt(const string messageSaisie, const int borneMin, const int borneMax
     return saisie;
 }
 
-bool saisieRecommencer(const string messageSaisie, const char valeurVraieMinuscule,
-                                                   const char valeurFausseMinuscule) {
+bool saisieRecommencer(const string messageSaisie, const char valeurVraieParam,
+                                                   const char valeurFausseParam) {
 
     // Définition des variables nécessaires à la saisie
     char saisie;        // Variable qui contiendra la valeur saisie
     bool saisieOK,
             erreurFlux;
-    char valeurVraie = (char) toupper(valeurVraieMinuscule);
-    char valeurFausse = (char) toupper(valeurFausseMinuscule);
+    char valeurVraie = (char) toupper(valeurVraieParam);
+    char valeurFausse = (char) toupper(valeurFausseParam);
 
     // Définition des constantes
     const string MSG_ERREUR_FLUX = "Veuillez entrer un caractere.";
@@ -242,7 +241,7 @@ bool saisieRecommencer(const string messageSaisie, const char valeurVraieMinuscu
 
 int nbrJoursMois(const int mois, const int annee) {
     // On compte 31 pour tous les mois puis
-    //      - si c'est février, on déduit 3 si c'est bissextile et 3 si ça ne l'est pas
+    //      - si c'est février, on déduit 2 si c'est bissextile et 3 si ça ne l'est pas
     //      - si ce n'est pas février, on fait modulo 7 pour "mettre août sur janvier"
     //        ensuite on enlève soit 0 soit 1 avec le modulo 2.
     return (31 - ((mois == 1) ? (3 - (int) estBissextile(annee)) : ((mois) % 7 % 2)));
@@ -344,7 +343,7 @@ int afficherMois(const int mois, const int annee, const int debutDuMois) {
     cout << endl;
 
     // On affiche les jours du mois dans les bonnes colonnes
-    // Ici les numéros concordent puisqu'ils sont affichés
+    // Ici jourMois concorde puisqu'il est affiché
     for(int jourMois = 1, compteur = 1; jourMois <= nbrJours; ++compteur) {
 
         // On affiche d'abord des espaces pour commencer le mois le bon jour de la semaine
@@ -360,5 +359,9 @@ int afficherMois(const int mois, const int annee, const int debutDuMois) {
             cout << endl;
     }
 
+    // Pour trouver le jour à retourner, on fait le décalage du mois précédent + le nombre de jour de
+    // ce mois et on prend le modulo pour trouver le jour de la semaine auquel il correspond. Le fait
+    // que le mois suivant commencera le jour suivant (ce qui serait un +1 normalement) est déjà inclu
+    // dans nbrJours puisqu'il commence à 1 et pas à 0. Le décalage est donc garanti.
     return ((nbrJours + debutDuMois) % 7);
 }
