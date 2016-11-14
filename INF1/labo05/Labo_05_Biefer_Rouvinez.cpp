@@ -1,9 +1,12 @@
 /*
------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 Laboratoire : Labo_05_Biefer_Rouvinez
-Fichier     : Labo_04_Biefer_Rouvinez.cpp
+
+Fichier     : Labo_05_Biefer_Rouvinez.cpp
+
 Auteur(s)   : Julien Biefer et Sven Rouvinez
-Date        : 13.11.2016
+
+Date        : 15.11.2016
 
 But         : Afficher un calendrier complet pour une année donnée par l'utilisateur
 
@@ -16,7 +19,8 @@ Remarque(s) : Les paramètres donnés aux fonctions ne sont pas vérifiées.
               repris de l'algorithme original pour souci de compréhension.
 
 Compilateur : Apple LLVM 8.0
------------------------------------------------------------------------------------
+              gcc version 6.2.1 20160916 (Red Hat 6.2.1-2) (GCC)
+---------------------------------------------------------------------------------------
 */
 
 #include <iostream>
@@ -28,6 +32,11 @@ Compilateur : Apple LLVM 8.0
 #define VIDER_BUFFER cin.ignore(numeric_limits<streamsize>::max(), '\n')
 
 using namespace std;
+
+
+//=========================================================================================
+// Prototypes
+//=========================================================================================
 
 // Renvoie le jour de la semaine (0 (lundi) et 6 (dimanche)) pour une date donnée
 // Tiré de http://mathforum.org/library/drmath/view/55837.html
@@ -58,9 +67,9 @@ char intJourEnChar(const int numJourSemaine);
 int afficherMois(const int mois, const int annee, const int debutDuMois);
 
 
-//============================================================================================
+//=========================================================================================
 // Programme principal
-//============================================================================================
+//=========================================================================================
 
 int main() {
 
@@ -124,9 +133,10 @@ int main() {
     return EXIT_SUCCESS;
 }
 
-//============================================================================================
+
+//=========================================================================================
 // Fonctions
-//============================================================================================
+//=========================================================================================
 
 int jourSemaine(const int jour, const int mois, const int annee) {
     int d = jour,
@@ -141,8 +151,9 @@ int jourSemaine(const int jour, const int mois, const int annee) {
     return (d + 2*m + (3*(m+1)/5) + y + (y/4) - (y/100) + (y/400)) % 7;
 }
 
-
 bool estBissextile(const int annee) {
+    // Une année est bissextile si c'est un multiple de 400 ou si c'est un multiple de 4
+    // et pas de 100.
     return (bool) (!(annee % 400) || (!(annee % 4) && (annee % 100)));
 }
 
@@ -158,25 +169,31 @@ int saisieInt(const string messageSaisie, const int borneMin, const int borneMax
     const string MSG_ERREUR_SAISIE = "La valeur saisie n'est pas comprise dans l'intervalle.";
 
     do {
+        // On récupère la saisie de l'utilisateur
         cout << messageSaisie;
         erreurFlux = bool(cin >> saisie);
 
+        // S'il y a eu une erreur de flux, on la corrige et on reboucle (flag saisieOK à false)
         if (!erreurFlux) {
             cin.clear();
             cout << MSG_ERREUR_FLUX << endl << endl;
             saisieOK = false;
         }
+        // Si la valeur n'est pas dans l'intervalle demandé, on reboucle
         else if (saisie < borneMin || saisie > borneMax) {
             cout << MSG_ERREUR_SAISIE << endl << endl;
             saisieOK = false;
         }
+        // Sinon on accepte la valeur et on arrête de boucler (flag saisieOK à true)
         else {
             saisieOK = true;
         }
+
         VIDER_BUFFER;
 
     } while(!saisieOK);
 
+    // On retourne finalement la valeur saisie
     return saisie;
 }
 
@@ -195,18 +212,22 @@ bool saisieRecommencer(const string messageSaisie, const char valeurVraieMinuscu
     const string MSG_ERREUR_SAISIE = "La valeur saisie n'est pas une valeur possible.";
 
     do {
+        // On récupère la saisie de l'utilisateur
         cout << messageSaisie;
         erreurFlux = bool(cin >> saisie);
 
+        // S'il y a eu une erreur de flux, on la corrige et on reboucle (flag saisieOK à false)
         if (!erreurFlux) {
             cin.clear();
             cout << MSG_ERREUR_FLUX << endl << endl;
             saisieOK = false;
         }
+        // Si la valeur est pas parmis les valeurs demandées, on reboucle
         else if (toupper(saisie) != valeurVraie && toupper(saisie) != valeurFausse) {
             cout << MSG_ERREUR_SAISIE << endl << endl;
             saisieOK = false;
         }
+        // Sinon, on accepte la valeur et on arrête de boucler (flag saisieOK à true)
         else {
             saisieOK = true;
         }
@@ -215,10 +236,15 @@ bool saisieRecommencer(const string messageSaisie, const char valeurVraieMinuscu
 
     } while(!saisieOK);
 
+    // On retourne finalement un booléen en fonction de la valeur saisie (true si 'o' ou 'O')
     return (toupper(saisie) == valeurVraie);
 }
 
 int nbrJoursMois(const int mois, const int annee) {
+    // On compte 31 pour tous les mois puis
+    //      - si c'est février, on déduit 3 si c'est bissextile et 3 si ça ne l'est pas
+    //      - si ce n'est pas février, on fait modulo 7 pour "mettre août sur janvier"
+    //        ensuite on enlève soit 0 soit 1 avec le modulo 2.
     return (31 - ((mois == 1) ? (3 - (int) estBissextile(annee)) : ((mois) % 7 % 2)));
 }
 
@@ -321,14 +347,15 @@ int afficherMois(const int mois, const int annee, const int debutDuMois) {
     // Ici les numéros concordent puisqu'ils sont affichés
     for(int jourMois = 1, compteur = 1; jourMois <= nbrJours; ++compteur) {
 
-        // On affiche d'abord les espaces pour commencer le mois le bon jour de la semaine
+        // On affiche d'abord des espaces pour commencer le mois le bon jour de la semaine
         cout << setw(ESPACE_NUMERO);
         if (compteur <= debutDuMois)
             cout << " ";
-            // Puis on affiche les dates
+        // Puis on affiche les dates
         else
             cout << jourMois++;
 
+        // On retourne à la ligne si on est en fin de ligne sauf si on est à la fin du mois
         if (!(compteur % 7) && jourMois <= nbrJours)
             cout << endl;
     }
