@@ -109,7 +109,7 @@ int main() {
         //=======================================================
         // 6. Demande si l'utilisateur veut relancer le programme
         //=======================================================
-        recommencer = saisieRecommencer("Voulez-vous recommencer [o/n] ? ", 'O', 'N');
+        recommencer = saisieRecommencer("Voulez-vous recommencer [o/n] ? ", 'o', 'n');
         cout << endl;
 
     } while(recommencer);
@@ -320,7 +320,6 @@ int afficherMois(const int mois, const int annee, const int debutDuMois) {
     // On affiche les jours du mois dans les bonnes colonnes
     // Ici les numéros concordent puisqu'ils sont affichés
     for(int jourMois = 1, compteur = 1; jourMois <= nbrJours; ++compteur) {
-        //cout << setw(ESPACE_NUMERO) << (compteur <= debutDuMois ? ' ' : char(jourMois++));
 
         // On affiche d'abord les espaces pour commencer le mois le bon jour de la semaine
         cout << setw(ESPACE_NUMERO);
@@ -330,10 +329,8 @@ int afficherMois(const int mois, const int annee, const int debutDuMois) {
         else
             cout << jourMois++;
 
-
         if (!(compteur % 7) && jourMois <= nbrJours)
             cout << endl;
-
     }
 
     return ((nbrJours + debutDuMois) % 7);
