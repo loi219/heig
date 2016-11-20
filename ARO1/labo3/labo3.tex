@@ -1,5 +1,5 @@
 \documentclass[a4paper]{article}
-\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[english,french]{babel}
 \usepackage{amsmath}
@@ -31,7 +31,7 @@
 
 
 
-\title{\color{Monokaimagenta} \textbf{Laboratoire \\ L?Unit� Arithm�tique et Logique (ALU) }}
+\title{\color{Monokaimagenta} \textbf{Laboratoire \\ L'Unité Arithmétique et Logique (ALU) }}
 \author{Sven Rouvinez \& Yohann Meyer}
 
 
@@ -47,16 +47,16 @@
 \begin{titlepage}
 	\centering
 	
-	{\scshape\LARGE \color{Monokaimagenta} Laboratoire \\ L'Unit� Arithm�tique et Logique (ALU) \par}
+	{\scshape\LARGE \color{Monokaimagenta} Laboratoire \\ L'Unité Arithmétique et Logique (ALU) \par}
 	\vspace{1cm}
 	
 	{\Large\itshape Yohann Meyer \& Sven Rouvinez\par}
 	\vfill
 	Professeur\par
-	\textbf{Carlos Andr�s Pena}\par
+	\textbf{Carlos Andrés Pena}\par
 	\vspace{1cm}
 	Assistant\par
-	\textbf{Ga�tan Matthey}
+	\textbf{Gaëtan Matthey}
 	
 	\vfill
 
@@ -66,56 +66,145 @@
 
 
 
-\section{Description g�n�rale}
+\section{Description générale}
 \paragraph{}
-Il s'agit dans ce laboratoire d?impl�menter une ALU � 4 bits. L?ALU effectue 15 op�rations arithm�tiques et logiques, class�s en quatre fonctionnalit�s. La table d�taille ces op�rations ainsi que leurs codes (Opcode).
+Il s’agit dans ce laboratoire d’implémenter une ALU à 4 bits. L’ALU effectue 15 opérations arithmétiques et logiques, classés en quatre fonctionnalités. La table détaille ces opérations ainsi que leurs codes (Opcode).
 
 	
 \begin{tcolorbox}[colframe=Monokaimagenta,colback=white]
-R�ponses � diverses questions - Max 1/4 page 
-Il est demand� de: 
-a. Identifiez les bits de ?l?opcode? (op) d�terminant la fonctionnalit� � ex�cuter
-b. Identifiez pour chaque fonctionnalit� les bits de ?l?opcode? (op) qui s�lectionnent l?op�ration � ex�cuter
-Remplacez le texte ci-dessus par vos r�ponses (� l?int�rieur du cadre rouge)
+Réponses à diverses questions - Max 1/4 page 
+Il est demandé de: 
+a. Identifiez les bits de “l’opcode” (op) déterminant la fonctionnalité à exécuter
+b. Identifiez pour chaque fonctionnalité les bits de “l’opcode” (op) qui sélectionnent l’opération à exécuter
+Remplacez le texte ci-dessus par vos réponses (à l’intérieur du cadre rouge)
 \end{tcolorbox}
 
 \section{Architecture}
 \paragraph{}
-L?architecture g�n�rale de l?ALU est compos�e de 4 blocs fonctionnels comme illustr� dans la figure ci-dessous. Ces blocs, r�alisant chacun une fonctionnalit� diff�rente, sont con�us, r�alis�s et test�s en simulation sur Logisim. Ensuite, les quatre blocs sont int�gr�s selon le sch�ma bloc de la figure et, finalement, ils sont synth�tis�s et programm�s et leur fonctionnement est valid� sur la carte Max V. 
+L’architecture générale de l’ALU est composée de 4 blocs fonctionnels comme illustré dans la figure ci-dessous. Ces blocs, réalisant chacun une fonctionnalité différente, sont conçus, réalisés et testés en simulation sur Logisim. Ensuite, les quatre blocs sont intégrés selon le schéma bloc de la figure et, finalement, ils sont synthétisés et programmés et leur fonctionnement est validé sur la carte Max V. 
 
-
-\section{R�alisation}
+\section{Réalisation}
 \subsection{Le bloc Add/Sub}
 
 \paragraph{Conception}
-Selon le cahier de charges: ?Le bloc Add/Sub g�n�re une sortie R[3:0] � 4 bits avec la somme ou la diff�rence entre A et B, ainsi que quatre sorties � 1 bit indiquant, respectivement, en cas de d�passement de capacit� (overflow), s?il y a une retenue (carry), si le r�sultat de l?op�ration Add/Sub est z�ro (zero), et le bit de poids fort du r�sultat de l?additionneur/soustracteur (R[3])?. Comme entr�es au bloc, en plus des op�randes A et B, deux signaux � 1 bit indiquent, respectivement, le type d?op�ration (Add ou Sub) et le type d?arithm�tique (Sign�e ou Non-sign�e). Le circuit qui r�alise le bloc Add/Sub en respectant les consignes est pr�sent� ci-dessous. 
+Selon le cahier de charges: “Le bloc Add/Sub génère une sortie R[3:0] à 4 bits avec la somme ou la différence entre A et B, ainsi que quatre sorties à 1 bit indiquant, respectivement, en cas de dépassement de capacité (overflow), s’il y a une retenue (carry), si le résultat de l’opération Add/Sub est zéro (zero), et le bit de poids fort du résultat de l’additionneur/soustracteur (R[3])”. Comme entrées au bloc, en plus des opérandes A et B, deux signaux à 1 bit indiquent, respectivement, le type d’opération (Add ou Sub) et le type d’arithmétique (Signée ou Non-signée). Le circuit qui réalise le bloc Add/Sub en respectant les consignes est présenté ci-dessous. 
+
 
 \begin{tcolorbox}[colframe=Monokaimagenta,colback=white]
 Conception - Max 1 page 
-Ins�rez une capture d?�cran pour pr�senter votre bloc Add/Sub.
-Accompagnez-le de commentaires et/ou d?explications n�cessaires � sa compr�hension.
-Remplacez le texte ci-dessus par vos r�ponses (� l?int�rieur du cadre rouge)
+Insérez une capture d’écran pour présenter votre bloc Add/Sub.
+Accompagnez-le de commentaires et/ou d’explications nécessaires à sa compréhension.
+Remplacez le texte ci-dessus par vos réponses (à l’intérieur du cadre rouge)
 \end{tcolorbox}
 
 \paragraph{Tests} 
-Le fonctionnement du circuit Add/Sub est valid� au moyen de plusieurs tests effectu�s en  simulation sur Logisim. Les cas de test sont choisis de fa�on � illustrer le comportement du circuit dans le plus grand nombre possible de conditions de fonctionnement permettant de v�rifier la justesse du r�sultat et la validit� des signaux de sortie: carry, overflow et zero. Ces tests sont pr�sent�s � continuation.
+Le fonctionnement du circuit Add/Sub est validé au moyen de plusieurs tests effectués en  simulation sur Logisim. Les cas de test sont choisis de façon à illustrer le comportement du circuit dans le plus grand nombre possible de conditions de fonctionnement permettant de vérifier la justesse du résultat et la validité des signaux de sortie: carry, overflow et zero. Ces tests sont présentés à continuation.
 
 \begin{tcolorbox}[colframe=Monokaimagenta,colback=white]
 Tests - Max 2 pages 
-Ins�rez  un tableau montrant les r�sultats des tests, illustr� avec une ou deux captures d?�cran. Privil�giez l?illustration de plusieurs tests sur une m�me image (vous pouvez aussi utiliser un chronogramme)
-Expliquez/justifiez le choix des tests effectu�s et les r�sultats obtenus.
+Insérez  un tableau montrant les résultats des tests, illustré avec une ou deux captures d’écran. Privilégiez l’illustration de plusieurs tests sur une même image (vous pouvez aussi utiliser un chronogramme)
+Expliquez/justifiez le choix des tests effectués et les résultats obtenus.
 Au besoin, ajoutez des annotations textuelles ou graphiques directement sur les images.
-Remplacez le texte ci-dessus par vos r�ponses (� l?int�rieur du cadre rouge)
+Remplacez le texte ci-dessus par vos réponses (à l’intérieur du cadre rouge)
 \end{tcolorbox}
 
 \begin{tcolorbox}[colframe=Monokaimagenta,colback=white]
-R�ponses � diverses questions - Max 1 page
-Expliquez bri�vement la logique derri�re le calcul d?overflow (d�passement) dans les diff�rents cas (sign� ou non-sign�, addition ou soustraction.
-Quelles sont les valeurs maximum et minimum des op�randes ou du r�sultat que l?on peut obtenir sans qu?il y ait une erreur d?op�ration?
-Remplacez le texte ci-dessus par vos r�ponses (� l?int�rieur du cadre rouge)
+Réponses à diverses questions - Max 1 page
+Expliquez brièvement la logique derrière le calcul d’overflow (dépassement) dans les différents cas (signé ou non-signé, addition ou soustraction.
+Quelles sont les valeurs maximum et minimum des opérandes ou du résultat que l’on peut obtenir sans qu’il y ait une erreur d’opération?
+Remplacez le texte ci-dessus par vos réponses (à l’intérieur du cadre rouge)
 \end{tcolorbox}
 
-\section{Le bloc Comparateur}
-\paragraph{Conception} Selon le cahier de charges, le comparateur utilise trois signaux en provenance du bloc Add/Sub: la retenue (carry), la d�tection de z�ro (zero), et le bit de poids fort du r�sultat (R[3]) en plus de quelques bits s�lectionn�es des entr�es A, B, et op. La sortie cmp est active (c?est � dire d?une valeur �gale � 0001) selon la logique ci-dessous.
+\subsection{Le bloc Comparateur}
+\paragraph{Conception} Selon le cahier de charges, le comparateur utilise trois signaux en provenance du bloc Add/Sub: la retenue (carry), la détection de zéro (zero), et le bit de poids fort du résultat (R[3]) en plus de quelques bits sélectionnées des entrées A, B, et op. La sortie cmp est active (c’est à dire d’une valeur égale à 0001) selon la logique ci-dessous.
+
+\begin{tcolorbox}[colframe=Monokaimagenta,colback=white]
+Conception - Max 1 page 
+Insérez une capture d’écran pour présenter votre bloc Comparateur. 
+Annotez votre capture et accompagnez-la de commentaires et/ou d’explications nécessaires à sa compréhension.
+Remplacez le texte ci-dessus par vos réponses (à l’intérieur du cadre rouge)
+\end{tcolorbox}
+
+\begin{tcolorbox}[colframe=Monokaimagenta,colback=white]
+Réponses à diverses questions (max 1/2 page)
+Expliquez clairement les fonctions logiques de comparaison qui vous ont été fournies dans le tableau ci-dessus derrière le bloc comparateur 
+Dans quels cas le résultat de la comparaison ne peut, ou ne doit, pas être utilisé à cause d’une erreur d’opération? Justifiez votre réponse.
+Remplacez le texte ci-dessus par vos réponses (à l’intérieur du cadre rouge)
+\end{tcolorbox}
+
+\paragraph{Tests}
+Le correct fonctionnement du comparateur est vérifié par quelques tests, sélectionnés de façon à illustrer clairement le résultat des opérations de comparaison avec différentes valeurs d’opérandes. Les figures suivantes montrent les tests qui ont été réalisés.
+
+\begin{tcolorbox}[colframe=Monokaimagenta,colback=white]
+Tests - Max 1 page 
+Insérez  un tableau montrant les résultats des tests, illustré avec une ou deux captures d’écran. Privilégiez l’illustration de plusieurs tests sur une même image (vous pouvez aussi utiliser un chronogramme)
+Expliquez/justifiez le choix des tests effectués et les résultats obtenus.
+Au besoin, ajoutez des annotations textuelles ou graphiques directement sur les images.
+Remplacez le texte ci-dessus par vos réponses (à l’intérieur du cadre rouge)
+\end{tcolorbox}
+
+\subsection{L'unité logique}
+\paragraph{Conception et tests}
+L’unité logique, réalisée en Logisim et montrée dans le schéma ci-dessous, calcule les 4 opérations logiques demandées par le cahier de charges. Les opérations sont effectuées bit à bit entre les deux opérandes.
+
+\begin{tcolorbox}[colframe=Monokaimagenta,colback=white]
+Conception et tests - Max 1 page 
+Insérez une capture d’écran pour présenter votre unité logique
+Accompagnez-les de commentaires et/ou d’explications nécessaires à sa compréhension.
+Présentez quelques exemples de tests  afin de pouvoir observer le fonctionnement des opérations logiques.
+Remplacez le texte ci-dessus par vos réponses (à l’intérieur du cadre rouge)
+\end{tcolorbox}
+
+\subsection{Opération custom}
+\paragraph{Conception et tests}
+l est demandé de réaliser un circuit qui calcule le nombre total de bits, en A et en B, qui valent 1. Cette opération est effectuée par le système combinatoire de la figure suivante:
+
+\begin{tcolorbox}[colframe=Monokaimagenta,colback=white]
+Conception et tests -  Max 1 page 
+Insérez une capture d’écran pour présenter votre bloc Custom
+Accompagnez-les de commentaires et/ou d’explications nécessaires à sa compréhension.
+Expliquez clairement le principe de fonctionnement de votre réalisation de l’opération custom et comment vous avez réussi à réduire le nombre d’additionneurs au minimum.
+Présentez quelques exemples de fonctionnement au moyen de simulations sur Logisim
+Remplacez le texte ci-dessus par vos réponses (à l’intérieur du cadre rouge)
+\end{tcolorbox}
+
+\subsection{Intégration}
+\paragraph{Réalisation et tests}
+Le schéma ci-dessous montre le circuit Logisim de l’ALU, avec les 4 blocs présentés avant et les circuits permettant (1) de sélectionner le résultat produit par chacun des blocs correspondant à une fonctionnalité et (2) de générer le signal d’erreur selon le cahier de charges. 
+
+\begin{tcolorbox}[colframe=Monokaimagenta,colback=white]
+Réalisation et tests - Max 1 page 
+Insérez une capture d’écran du schéma-bloc général de votre ALU
+A l’aide d’un tableau, donnez un exemple pour chaque bloc correspondant à une fonctionnalité et montrez la pertinence du signal d’erreur par quelques exemples
+Remplacez le texte ci-dessus par vos réponses (à l’intérieur du cadre rouge)
+\end{tcolorbox}
+
+\subsection{Synthèse et test de fonctionnement réel}
+\paragraph{Synthèse et configuration du matériel, test de fonctionnement.}
+L’ALU est finalement synthétisée dans le but de configurer (programmer) le circuit programmable présent dans la carte Max V. Les opérandes sont entrés grâce aux interrupteurs de la console. Le code d’opération est sélectionné grâce aux dip-switchs de la carte et le résultat, ainsi que le signal d’erreur, sont affichés au moyen des lampes LED de la console. Cette configuration est testée et quelques exemples sélectionnés sont réalisés pour vérifier la justesse des résultats obtenus et du comportement général du circuit.
+
+\begin{tcolorbox}[colframe=Monokaimagenta,colback=white]
+Essais avec une carte - Max 1 page 
+Vous devez avoir montré votre circuit en fonctionnement au professeur ou à l’assistant
+Illustre cette étape par une photo du circuit en fonctionnement.
+Commentez brièvement votre expérience dans cette étape en mentionnant, par exemple, des éventuelles difficultés à faire fonctionner le circuit ou à configurer la carte, etc.
+Remplacez le texte ci-dessus par vos réponses (à l’intérieur du cadre rouge)
+\end{tcolorbox}
+
+\paragraph{Analyse de résultats et conclusions}
+
+\begin{tcolorbox}[colframe=Monokaimagenta,colback=white]
+Conclusion - Max 1/2 page 
+Cette section est libre pour que vous fassiez une analyse critique de votre laboratoire
+Commentez et analysez 
+les résultats, 
+les difficultés et les succès
+Rédigez quelques conclusions personnelles
+Donnez vos impressions et analysez votre expérience dans ce laboratoire
+Discutez de ce que vous avez appris (ou pas)
+Analysez votre travail, votre implication
+Evitez les banalités et les lieux communs
+ETCAETERA…
+\end{tcolorbox}
 
 \end{document}
