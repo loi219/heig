@@ -1,5 +1,7 @@
-.~lock*
-.aux*
-.out*
-.tar*
-.gz*
+*.~lock
+*.aux
+*.out
+*.tar
+*.gz
+*.log
+*.hidden
