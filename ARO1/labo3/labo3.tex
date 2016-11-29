@@ -279,6 +279,8 @@ Expliquez clairement les fonctions logiques de comparaison qui vous ont été fo
 Dans quels cas le résultat de la comparaison ne peut, ou ne doit, pas être utilisé à cause d’une erreur d’opération? Justifiez votre réponse.
 Remplacez le texte ci-dessus par vos réponses (à l’intérieur du cadre rouge)
 
+TODO: Dans quels cas le résultat de la comparaison ne peut, ou ne doit, pas être utilisé à cause d’une erreur d’opération? 
+
 \paragraph{$A \ge B$ (signé)} (not(A[3]) and B[3]) or (not(R[3]) and (A[3] xnor B[3]))\\
 Cette opération utilise uniquement les bits de poids de fort des entrées selon la consigne.
 Si \textbf{A} ou \textbf{B} sont actifs, ils seront négatif.\\
@@ -286,7 +288,21 @@ Une porte AND sera toujours fausse si une entrée est différente à 1 donc dans
 
 \paragraph{$A < B$ (signé)} (A[3] and not(B[3])) or (R[3] and (A[3] xnor B[3]))\\
 Si \textbf{A} ou \textbf{B} sont actifs, ils seront négatif.\\
-Donc pour que \textbf{A} soit $<$ que \textbf{B} il faut que l'entrée \textbf{A} soit active. Dans le cas où \textbf{B} est actif l'opération AND serait fausse à cause de la porte NOT appliquée.
+Le bit de poids fort va nous permettre de savoir quand $A<B$ lorsque les 2 sont négatifs donc si $R_3=1$ cela va nous avertir que  $A<B$ et dans le cas contraire le résultat de l'opération (R[3] and (A[3] xnor B[3]) sera égale à 0 et donc la comparaison sera fausse.
+
+\paragraph{$A=B$} not(zero)\\
+Grâce au bloc Add/Sub, si le résultat vaut 0 nous sommes directement en mesure de traiter le signal pour savoir s'il est actif ou pas.
+
+\paragraph{$A=B$} zero\\
+Même fonctionnement que le paragraphe ci-dessus mais avec la différence que la porte NOT n'est pas utilisée car cette fois le système doit afficher si c'est égale à 0.
+
+\paragraph{$A \ge B$ (non signés)} carry\\
+La retenue nous permet définir s'il y a un dépassement de mémoire
+
+\paragraph{$A < B$ (non signés)} not(carry)\\
+Si l'entrée carry n'est pas activée cela revient à dire que l'opération s'est déroulée correctement
+
+
 \end{tcolorbox}
 
 \paragraph{Tests}
@@ -298,6 +314,91 @@ Insérez  un tableau montrant les résultats des tests, illustré avec une ou de
 Expliquez/justifiez le choix des tests effectués et les résultats obtenus.
 Au besoin, ajoutez des annotations textuelles ou graphiques directement sur les images.
 Remplacez le texte ci-dessus par vos réponses (à l’intérieur du cadre rouge)
+\begin{center}
+    
+
+\begin{tabular}{|c|c|c|c|cc|}
+\hline
+    Opcode & A & B & $R_3$ & $\overline{A}B + \overline{R_3}(\overline{A \oplus B})$ & Circuit\\
+   \hline
+    001    & 0 & 0 & 0     & 1             & 1 \\
+           & 0 & 0 & 1     & 0             & 0\\
+           & 0 & 1 & 0     & 1             & 1 \\
+           & 0 & 1 & 1     & 1             & 1\\
+           & 1 & 0 & 0     & 0             & 0\\
+           & 1 & 0 & 1     & 0             & 0 \\
+           & 1 & 1 & 0     & 1             & 1 \\
+           & 1 & 1 & 1     & 0             & 0 \\
+\end{tabular}
+
+\smallskip
+    
+\begin{tabular}{|c|c|c|c|cc|}
+\hline    
+Opcode & A & B & $R_3$ & $A\overline{B} + {R_3}(\overline{A \oplus B})$ & Circuit\\
+\hline
+    010    & 0 & 0 & 0     & 0             & 0 \\
+           & 0 & 0 & 1     & 1             & 1\\
+           & 0 & 1 & 0     & 0             & 0 \\
+           & 0 & 1 & 1     & 0             & 0\\
+           & 1 & 0 & 0     & 1             & 1\\
+           & 1 & 0 & 1     & 1             & 1 \\
+           & 1 & 1 & 0     & 0             & 0 \\
+           & 1 & 1 & 1     & 1             & 1 \\
+\end{tabular}
+
+\smallskip
+
+\begin{tabular}{|c|c|c|c|c|c|cc|}
+\hline
+    Opcode & A & B & ZERO & not(zero) & Circuit\\
+    \hline
+    011    & 0 & 0 & 0     & 1             & 1 \\
+           & 0 & 0 & 1     & 0             & 0\\
+           & 0 & 1 & 0     & 1             & 1 \\
+           & 0 & 1 & 1     & 0             & 0\\
+           & 1 & 0 & 0     & 1             & 1\\
+           & 1 & 0 & 1     & 0             & 0 \\
+           & 1 & 1 & 0     & 1             & 1 \\
+           & 1 & 1 & 1     & 0             & 0
+          
+
+\end{tabular}
+
+\begin{tabular}{|c|c|c|c|c|c|cc|}
+\hline
+    Opcode & A & B & ZERO & zero & Circuit\\
+    \hline
+    011    & 0 & 0 & 0     & 1             & 0 \\
+           & 0 & 0 & 1     & 1             & 1 \\
+           & 0 & 1 & 0     & 0             & 0 \\
+           & 0 & 1 & 1     & 1             & 1 \\
+           & 1 & 0 & 0     & 0             & 0 \\
+           & 1 & 0 & 1     & 1             & 1 \\
+           & 1 & 1 & 0     & 0             & 0 \\
+           & 1 & 1 & 1     & 1             & 1
+          
+\end{tabular}
+
+\begin{tabular}{|c|c|c|c|c|c|c|c}
+\hline
+    A & B & Carry & carry & Circuit & not(carry) & Circuit\\
+    \hline
+    0 & 0 & 0     & 0     & 0       &     & \\
+    0 & 0 & 1     & 1     & 1       &     & \\
+    0 & 1 & 0     & 0     & 0       &     & \\
+    0 & 1 & 1     & 1     & 1       &     & \\
+    1 & 0 & 0     & 0     & 0       &     & \\
+    1 & 0 & 1     & 1     & 1       &     & \\
+    1 & 1 & 0     & 0     & 0       &     & \\
+    1 & 1 & 1     & 1     & 1       &     & 
+          
+\end{tabular}
+
+
+
+\end{center}
+
 \end{tcolorbox}
 
 \subsection{L'unité logique}
@@ -312,6 +413,28 @@ Insérez une capture d’écran pour présenter votre unité logique
 Accompagnez-les de commentaires et/ou d’explications nécessaires à sa compréhension.
 Présentez quelques exemples de tests  afin de pouvoir observer le fonctionnement des opérations logiques.
 Remplacez le texte ci-dessus par vos réponses (à l’intérieur du cadre rouge)
+L'ALU est composé de 4 quatres blocs:
+\begin{itemize}
+
+\item    \nameref{add_Sub}
+\item    \nameref{comp}
+\item    \nameref{logique}
+\item    \nameref{custom}
+
+\end{itemize}
+L'opération voulue est décidée en fonction de \textbf{l'opcode}, cette entrée à 6 bits permet de choisir le bloc qui sera utilisé et quelle sera sa fonction. Par exemple dans l'image ci-dessous l'opcode est fixé à 011100, ce qui revient à utiliser le bloc COMPARATEUR avec la comparaison $A=B$\\
+
+TODO: ADD IMAGE ALU TEST
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{src/ALU.png}
+    \captionof{figure}{Bloc COMPARATEUR}
+    \label{fig:OVERFADDSUB_4BITS}
+\end{figure}
+
+
 \end{tcolorbox}
 
 \subsection{Opération custom}
@@ -327,6 +450,8 @@ Accompagnez-les de commentaires et/ou d’explications nécessaires à sa compr�
 Expliquez clairement le principe de fonctionnement de votre réalisation de l’opération custom et comment vous avez réussi à réduire le nombre d’additionneurs au minimum.
 Présentez quelques exemples de fonctionnement au moyen de simulations sur Logisim
 Remplacez le texte ci-dessus par vos réponses (à l’intérieur du cadre rouge)
+
+
 \end{tcolorbox}
 
 \subsection{Intégration}
