@@ -264,7 +264,7 @@ Les résultats attendus sont:
  \item    0001 si la comparaison est correcte, par exemple $A = B$
 \end{itemize}
 L'utilisation d'un "Bit selector" de sélectionner le type de comparaison voulue, ce plexer va "couper" notre opcode qui sera équivalent à \textbf{011XXX} et de choisir uniquement les 3 bits qui nous intéressent. Par exemple si l'opération voulue est $A=B$(100), nous allons donc prendre le groupe 4, le groupe 0 serait égal à \textbf{000} et le groupe 1 à \textbf{001}.\\
-L'utilisation de MUX permet d'aiguiller le résultat selon les tests effectués et de retourner \textbf{1} ou \textbf{0}
+L'utilisation de MUX permet d'aiguiller le résultat selon les tests effectués et de retourner \textbf{1} si la comparaison est correcte ou \textbf{0} si elle est fausse.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{src/COMPATEUR.png}
@@ -278,6 +278,15 @@ Réponses à diverses questions (max 1/2 page)
 Expliquez clairement les fonctions logiques de comparaison qui vous ont été fournies dans le tableau ci-dessus derrière le bloc comparateur 
 Dans quels cas le résultat de la comparaison ne peut, ou ne doit, pas être utilisé à cause d’une erreur d’opération? Justifiez votre réponse.
 Remplacez le texte ci-dessus par vos réponses (à l’intérieur du cadre rouge)
+
+\paragraph{$A \ge B$ (signé)} (not(A[3]) and B[3]) or (not(R[3]) and (A[3] xnor B[3]))\\
+Cette opération utilise uniquement les bits de poids de fort des entrées selon la consigne.
+Si \textbf{A} ou \textbf{B} sont actifs, ils seront négatif.\\
+Une porte AND sera toujours fausse si une entrée est différente à 1 donc dans le cas oû les 2 entrées sont à 0 ou l'une différente de l'autre le résultat de comparaison sera faux quelque soit le reste de l'opération. Une porte XNOR est vrai lorsque les 2 valeurs sont vraies ou fausses et ensuite la porte AND va nous permettre de retourner vrai uniquement si R est faux et la sortie du XNOR est vrai.
+
+\paragraph{$A < B$ (signé)} (A[3] and not(B[3])) or (R[3] and (A[3] xnor B[3]))\\
+Si \textbf{A} ou \textbf{B} sont actifs, ils seront négatif.\\
+Donc pour que \textbf{A} soit $<$ que \textbf{B} il faut que l'entrée \textbf{A} soit active. Dans le cas où \textbf{B} est actif l'opération AND serait fausse à cause de la porte NOT appliquée.
 \end{tcolorbox}
 
 \paragraph{Tests}
