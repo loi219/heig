@@ -416,12 +416,19 @@ Remplacez le texte ci-dessus par vos réponses (à l’intérieur du cadre rouge
 L'ALU est composé de 4 quatres blocs:
 \begin{itemize}
 
-\item    \nameref{add_Sub}
-\item    \nameref{comp}
-\item    \nameref{logique}
-\item    \nameref{custom}
+\item    \nameref{add_Sub} qui permet de faire une addition ou une soustraction
+\item    \nameref{comp} qui permet de faire une comparaison entre les bits de poids forts
+\item    \nameref{logique} effectue les opérations:
+    \begin{itemize}
+        \item     AND
+        \item     OR
+        \item     NAND
+        \item     XOR
+    \end{itemize}
+\item    \nameref{custom} calcul la somme de 1 actif dans \textbf{A} et \textbf{B}
 
 \end{itemize}
+\smallskip
 L'opération voulue est décidée en fonction de \textbf{l'opcode}, cette entrée à 6 bits permet de choisir le bloc qui sera utilisé et quelle sera sa fonction. Par exemple dans l'image ci-dessous l'opcode est fixé à 011100, ce qui revient à utiliser le bloc COMPARATEUR avec la comparaison $A=B$\\
 
 TODO: ADD IMAGE ALU TEST
@@ -450,6 +457,8 @@ Accompagnez-les de commentaires et/ou d’explications nécessaires à sa compr�
 Expliquez clairement le principe de fonctionnement de votre réalisation de l’opération custom et comment vous avez réussi à réduire le nombre d’additionneurs au minimum.
 Présentez quelques exemples de fonctionnement au moyen de simulations sur Logisim
 Remplacez le texte ci-dessus par vos réponses (à l’intérieur du cadre rouge)
+
+
 
 
 \end{tcolorbox}
