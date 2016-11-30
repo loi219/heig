@@ -19,7 +19,7 @@
 \usepackage{float}
 \usepackage{graphicx}
 \usepackage{subcaption}
-\usepackage{tabularx}
+\usepackage{caption}
 
 
 
@@ -65,30 +65,7 @@ b. Identifiez pour chaque fonctionnalité les bits de “l’opcode” (op) qui 
 Remplacez le texte ci-dessus par vos réponses (à l’intérieur du cadre rouge)\\
 \begin{center}
     
-\begin{tabular}{ l | c |r }
-    \hline
-    Opcode           &  Fonctionnalité & Opération\\
-    \hline
-    0000$\phi\phi$   &     \nameref{add_Sub}    & $A+B$ (signé) \\
-    0010$\phi\phi$   &                 & $A-B$ (signé) \\
-    0001$\phi\phi$   &                 & $A+B$ (non signé) \\
-    0011$\phi\phi$   &                 & $A-B$ (non signé) \\
-    \hline
-    011001           &  \nameref{comp} & $A \ge B$ (signé) \\
-    011010           &                 & $A < B$ (signé) \\
-    011011           &                 & $A \ne B$\\
-    011100           &                 & $A = B$ \\
-    011101           &                 & $A \ge B$ (non signé) \\
-    011110           &                 & $A < B$ (non signé) \\
-    \hline
-    10$\phi\phi$00   &\nameref{logique}& $A$ and $B$\\
-    10$\phi\phi$01   &                 & $A$ or $B$\\
-    10$\phi\phi$10   &                 & $A$ nand $B$\\
-    10$\phi\phi$11   &                 & $A$ xor $B$\\
-    \hline
-    11$\phi\phi\phi$ & \nameref{custom}& Somme des \textbf{1} dans \textbf{B} et \textbf{A}
-     
-\end{tabular}
+
 
 \end{center}
 
@@ -187,13 +164,13 @@ Le deuxième illustre comment le système se comporte lorsque sa limite est atte
     \begin{subfigure}{.7\textwidth}
         \centering
         \includegraphics[width=.8\linewidth]{src/ADDSUB_TEST_AplB.png}
-        \label{fig:COMPARATEUR_EXEMPLE}
+        \label{fig:ex_moins_signes}
    \end{subfigure}
    
    \begin{subfigure}{.7\textwidth}
         \centering
         \includegraphics[width=.8\linewidth]{src/ADDSUB_TEST_AplB1.png}
-        \label{fig:COMPARATEUR_EXEMPLE_1}
+        \label{fig:ex_moins_signes1}
    \end{subfigure}
 
 \captionof{figure}{Exemple $A + B$ (signés)}
@@ -227,7 +204,7 @@ Le test suivant gère un overflow avec la sortie $R_3$ aussi active car le résu
 
 \captionof{figure}{Exemple $A - B$ (signés)}
 
-
+La suite de ces tests explique les cas de nombres non signés.\\
 \begin{tabular}{|c|c|c|c||c|c|c|c|c|}
     \hline
      ° & $Op_1$ & A[3:0] & B[3:0] & OVER & $C_{out}$ & $R_3$ & ZERO & Rés. \\
@@ -247,8 +224,8 @@ Les tests intéressants ont été couverts par ceux d'avant. \\
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{src/ADDSUB_TEST_AmoNsB.png}
-    \captionof{figure}{Bloc OVERFLOW}
-    \label{fig:OVERFADDSUB_4BITS}
+    \captionof{figure}{$A+B$ (non signés)}
+    \label{fig:ex_non_signes}
 \end{figure}
 
 \end{figure}
@@ -319,6 +296,7 @@ Elles sont obtenues selon le résultats du bloc Add/Sub
         \end{itemize}
 \item \textbf{Opcode\_2\_0} (3 bits) définit l'opération choisie
      \begin{itemize}
+     \smallskip
             \item \begin{tabular}{ |l | l| }
                     001   & $A \ge B$ (signé) \\
                     010   & $A < B$ (signé) \\
@@ -395,27 +373,25 @@ Insérez  un tableau montrant les résultats des tests, illustré avec une ou de
 Expliquez/justifiez le choix des tests effectués et les résultats obtenus.
 Au besoin, ajoutez des annotations textuelles ou graphiques directement sur les images.
 Remplacez le texte ci-dessus par vos réponses (à l’intérieur du cadre rouge)\\
+\end{tcolorbox}
+\begin{tcolorbox}[colframe=Monokaimagenta,colback=white]
 TODO REPLACEZ IMAGES
-\begin{center}
-    
-    \begin{figure}[H]
-    \centering
-    
-    \begin{subfigure}{.7\textwidth}
-        \centering
-        \includegraphics[width=.8\linewidth]{src/COMP_TEST_AgeB.png}
-        \label{fig:COMPARATEUR_EXEMPLE}
-   \end{subfigure}
-   
-   \begin{subfigure}{.7\textwidth}
-        \centering
-        \includegraphics[width=.8\linewidth]{src/COMP_TEST_AgeB1.png}
-        \label{fig:COMPARATEUR_EXEMPLE_1}
-   \end{subfigure}
 
-\captionof{figure}{Exemple COMPARATEUR $A\ge B$}
-
-\end{figure}
+\begin{figure}[H]	
+	\centering
+	\begin{subfigure}[t]{1in}
+		\centering
+		\includegraphics[width=1.5\textwidth]{src/COMP_TEST_AgeB.png}
+		\label{fig:COMPARATEUR_EXEMPLE}	
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[t]{1in}
+		\centering
+		\includegraphics[width=1.5\textwidth]{src/COMP_TEST_AgeB1.png}
+		\label{fig:COMPARATEUR_EXEMPLE_1}
+	\end{subfigure}
+	\captionof{figure}{Exemple COMPARATEUR $A\ge B$}
+\end{figure}    
     
     Un résultat interéssant est quand \textbf{A} (1) est négatif et \textbf{B} (1) avec $R_3$ qui n'est pas activé afin de montrer son importance. Voir images ci-dessus
 \begin{tabular}{|c|c|c|c|cc|}
@@ -429,28 +405,26 @@ TODO REPLACEZ IMAGES
 
 \smallskip
     
-    \begin{figure}[H]
-    \centering
     
-    \begin{subfigure}{.7\textwidth}
-        \centering
-        \includegraphics[width=.8\linewidth]{src/COMP_TEST_AlB.png}
-        \label{fig:COMPARATEUR_l_EXEMPLE}
-   \end{subfigure}
-   
-   \begin{subfigure}{.7\textwidth}
-        \centering
-        \includegraphics[width=.8\linewidth]{src/COMP_TEST_AlB1.png}
-        \label{fig:COMPARATEUR_l_EXEMPLE_1}
-   \end{subfigure}
+    
+\begin{figure}[H]	
+	\centering
+	\begin{subfigure}[t]{1in}
+		\centering
+		\includegraphics[width=1.5\textwidth]{src/COMP_TEST_AlB.png}
+		\label{fig:COMPARATEUR_l_EXEMPLE}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[t]{1in}
+		\centering
+		\includegraphics[width=1.5\textwidth]{src/COMP_TEST_AlB1.png}
+		\label{fig:COMPARATEUR_l_EXEMPLE_1}
+	\end{subfigure}
+	\captionof{figure}{Exemple COMPARATEUR $A < B$}
+\end{figure}        
+    
 
-\captionof{figure}{Exemple COMPARATEUR $A < B$}
-
-\end{figure}
-
-         
-
-
+        
     Lorsque que A est positif et B aussi le bit de poids fort nous permettra de choisir le chiffre le plus grand. Voir images ci-dessus 
 \begin{tabular}{|c|c|c|c|cc|}
 \hline    
@@ -509,10 +483,6 @@ Le cas du not(zero) est semblable, il y a juste un inversion logique.
 Dans cette comparaison, seule la retenue est  transmise par le bloc Add/Sub l'entrée \textbf{Carry}.\\
 Le cas du not(carry) est semblable, il y a juste un inversion logique.
 
-
-
-\end{center}
-
 \end{tcolorbox}
 
 \subsection{L'unité logique}
@@ -564,9 +534,30 @@ L'utilisation de telles portes se justifie par le coût relativement réduit de 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{src/LOGIC_1BIT.png}
+    \includegraphics[width=.5\textwidth]{src/LOGIC_1BIT.png}
     \captionof{figure}{Circuit LOGIQUE 1BIT}
     \label{fig:LOGIQUE_1BIT}
+\end{figure}
+
+
+\paragraph{Exemples}
+Cet exemple montre le fonctionnement d'une porte OR et d'une porte NAND bit par bit.
+\begin{figure}[H]	
+	\centering
+	\begin{subfigure}[t]{1in}
+		\centering
+		\includegraphics[width=1\textwidth]{src/LOGIC_4BITS_TEST_OR.png}
+		\caption{Porte OR}
+		\label{fig:LOGIQUE_4BITS_OR}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[t]{1in}
+		\centering
+		\includegraphics[width=1\textwidth]{src/LOGIC_4BITS_TEST_NAND.png}
+		\caption{Porte NAND}
+		\label{fig:LOGIQUE_4BITS_OR}
+	\end{subfigure}
+	\captionof{figure}{Exemple portes}
 \end{figure}
 
 \end{tcolorbox}
@@ -653,6 +644,24 @@ L'ALU est composé de 4 quatres blocs:
 \end{itemize}
 
 
+TODO montrez la pertinence du signal d’erreur par quelques exemples\\
+
+Le tableau ci-dessous donne un exemple des fonctionnalités présente dans l'ALU.
+\begin{tabular}{ l | c |r }
+    \hline
+    Opcode           &  Fonctionnalité & Opération\\
+    \hline
+    0011$\phi\phi$ & \nameref{add_Sub} & $A-B$ (non signé) \\
+    \hline
+    011101         & \nameref{comp}    & $A \ge B$ (non signé) \\
+    \hline
+    10$\phi\phi$10   &\nameref{logique}& $A$ nand $B$\\
+    \hline
+    11$\phi\phi\phi$ & \nameref{custom}& Somme des \textbf{1} dans \textbf{B} et \textbf{A}
+     
+\end{tabular}
+
+
 \end{tcolorbox}
 
 \subsection{Synthèse et test de fonctionnement réel}
@@ -665,11 +674,29 @@ Vous devez avoir montré votre circuit en fonctionnement au professeur ou à l�
 Illustre cette étape par une photo du circuit en fonctionnement.
 Commentez brièvement votre expérience dans cette étape en mentionnant, par exemple, des éventuelles difficultés à faire fonctionner le circuit ou à configurer la carte, etc.
 Remplacez le texte ci-dessus par vos réponses (à l’intérieur du cadre rouge)
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{src/alu_carte.jpg}
+    \captionof{figure}{Bloc ISZERO}
+    \label{fig:ISZERO}
+\end{figure}
+
+Nous avons eu plusieurs problèmes concernant le bloc COMPARATEUR, dans une premier temps nous l'avons testé sur la carte et c'est à ce moment que nous avons pu voir qu'il n'était pas fonctionnel, donc nous avons du détecter le problème en faisant des tables de vérité selon les tests proposé pour contrôler si $A \ge B$. Par manque de temps nous avons pu uniquement valider le fonctionnement correct via Logisim.
 \end{tcolorbox}
 
 \paragraph{Analyse de résultats et conclusions}
 \begin{tcolorbox}[colframe=Monokaimagenta,colback=white]
 Conclusion - Max 1/2 page 
+
+Ce laboratoire semblait relativement complexe lors d'une première lecture, mais grâce à une sythèse rapide et une modulation du point de vu des blocs nous avons pu approcher le problème de manière efficace.\\
+Suite à cette stratégie, nous avons pu approfondir certain bloc comme par exemple utiliser uniquement des portes NAND dans la fonction logique.
+Concernant les difficultés, nous nous sommes fait. En effet lors des tests du bloc COMPARATEUR, nous avons eu plusieurs erreurs avec la comparaison $A \ge B$ mais grâce à une table de vérité et une peu de patience nous avons trouvé qu'une erreur s'était glissée concerant TODO ERREUR.
+\paragraph{Avis Yohann}
+TODO
+\paragraph{Avis Sven}
+Ce laboratoire était très intéressant car il m'a permis de comprendre le fonctionnement complet d'une unité arithmétique et logique et sa compléxité mais surtout son utilité dans un environnement. J'ai trouvé que faire ce travail à 2 était très enrichissant, cela m'a permis d'acquérir de l'expérience auprès de Yohann et donc de comprendre, d'approfondir certaines choses, telle que le fonctionnement du CUSTOM qui me posait problème ou l'utilisation de portes NAND pour alléger les circuits.
+
 Cette section est libre pour que vous fassiez une analyse critique de votre laboratoire
 Commentez et analysez 
 les résultats, 
@@ -731,6 +758,8 @@ ETCAETERA…
     \captionof{figure}{Circuit LOGIQUE 1BIT}
     \label{fig:LOGIQUE_1BIT}
 \end{figure}
+
+
 
 
 \end{document}
